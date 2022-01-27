@@ -262,7 +262,7 @@ span.input-group-text{
 	 var clist = "${clist}";
 	 var member_id = "${mvo.member_id}";
 	 var item_no = "${item_no}";
-	  
+	 var sum = ${sum};
 	  
 	 document.getElementById("address").addEventListener("click", function() {//주소입력칸을 클릭하면
 			new daum.Postcode({
@@ -365,8 +365,8 @@ span.input-group-text{
 			     pg : 'inicis',//결재방법(pg)
 			     pay_method: 'card',
 			     merchant_uid : 'merchant_' + new Date().getTime(),// 상점에서 관리하는 주문 번호
-			     name : '주문명:결제테스트',//아이템명
-			     amount : 100, //실제 결제되는 가격
+			     name : 'DAPAN&DA',//아이템명
+			     amount : sum, //실제 결제되는 가격
 			     buyer_email : order_email,
 			     buyer_name : order_name,
 			     buyer_tel : order_phone_number,

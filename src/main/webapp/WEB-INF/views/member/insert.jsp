@@ -27,24 +27,24 @@
 					<form action="/member/insert" method="post" id="insertform">
 						<div class="input-group mb-2">
 							<span class="input-group-text">아이디</span> 
-							<input class="form-control" name="member_id" maxlength="15" required>
+							<input class="form-control" name="member_id" id="member_id" maxlength="15" required>
 							<button id="idcheck">중복검사</button>
 							<p id="idCheckResult"></p>
 						</div>
 
 						<div class="input-group mb-2">
 							<span class="input-group-text">비밀번호</span> 
-							<input class="form-control" type="password" name="member_pw" maxlength="10" required>
+							<input class="form-control" type="password" id="member_pw" name="member_pw" maxlength="10" required>
 						</div>
 
 						<div class="input-group mb-2">
 							<span class="input-group-text">이름</span> 
-							<input class="form-control" name="member_name" maxlength="15" required>
+							<input class="form-control" id="member_name" name="member_name" maxlength="15" required>
 						</div>
 
 						<div class="input-group mb-2">
 							<span class="input-group-text">생년월일</span> 
-							<input class="form-control" type="date" min="1901-01-01" max="2100-12-31" name="member_birthday" required>
+							<input class="form-control" type="date" min="1901-01-01" max="2100-12-31" id="member_birthday" name="member_birthday" required>
 						</div>
 
 						<div class="input-group mb-2">
@@ -64,7 +64,7 @@
 
 						<div class="input-group mb-2">
 							<span class="input-group-text">전화번호</span> 
-							<input class="form-control" name="member_phone_number"  placeholder="숫자만 입력하여 주십시오" maxlength="15" maxlength="13" required>
+							<input class="form-control" id="member_phone_number" name="member_phone_number"  placeholder="숫자만 입력하여 주십시오" maxlength="15" maxlength="13" required>
 						</div>
 
 						<input type="submit" id="signup" value="회원 등록">
