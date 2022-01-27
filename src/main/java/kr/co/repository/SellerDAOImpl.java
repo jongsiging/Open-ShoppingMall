@@ -25,5 +25,11 @@ public class SellerDAOImpl implements SellerDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NS+".idcheck", seller_id);
 	}
+
+	@Override
+	public SellerVO read(String seller_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".read", seller_id);
+	}
 	
 }

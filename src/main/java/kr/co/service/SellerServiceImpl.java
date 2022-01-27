@@ -24,5 +24,11 @@ public class SellerServiceImpl implements SellerService {
 		// TODO Auto-generated method stub
 		return sDao.idcheck(seller_id);
 	}
+
+	@Override
+	public SellerVO read(String seller_id) {
+		// TODO Auto-generated method stub
+		return sDao.read(seller_id);
+	}
 	
 }

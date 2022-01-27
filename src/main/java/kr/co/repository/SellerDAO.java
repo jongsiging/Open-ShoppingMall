@@ -8,4 +8,6 @@ public interface SellerDAO {
 
 	SellerVO idcheck(String seller_id);
 
+	SellerVO read(String seller_id);
+
 }
