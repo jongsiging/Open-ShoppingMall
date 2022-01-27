@@ -33,7 +33,6 @@ import com.sun.org.glassfish.gmbal.ParameterNames;
 import kr.co.domain.FnqVO;
 import kr.co.domain.ManagerVO;
 import kr.co.domain.MemberVO;
-import kr.co.domain.OrderVO;
 import kr.co.domain.OrdersVO;
 import kr.co.domain.PageTO;
 import kr.co.service.ManagerService;
