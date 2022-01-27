@@ -2,6 +2,8 @@ package kr.co.controller;
 
 import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,12 +56,12 @@ public class SellerController {
 		return "redirect:/";
 	}
 	
-//	@RequestMapping(value = "/read/{member_id}", method = RequestMethod.GET)
-//	public String read(@PathVariable("member_id") String member_id, Model model) {
-//		MemberVO vo = sService.read(member_id);		
-//		model.addAttribute("vo", vo);
-//		return "member/read";	
-//	}
+	@RequestMapping(value = "/read/{seller_id}", method = RequestMethod.GET)
+	public String read(@PathVariable("seller_id") String seller_id, Model model) {
+		SellerVO vo = sService.read(seller_id);		
+		model.addAttribute("vo", vo);
+		return "seller/read";	
+	}
 //	
 //	@RequestMapping(value = "/update/{member_id}", method = RequestMethod.GET)
 //	public String updateUI(@PathVariable("member_id") String member_id, Model model) {

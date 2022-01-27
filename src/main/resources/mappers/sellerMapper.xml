@@ -13,11 +13,11 @@
 <select id="idcheck" resultType="kr.co.domain.SellerVO">
 	SELECT * FROM seller WHERE seller_id = #{seller_id}
 </select>
-<!--
-<select id="read" resultType="kr.co.domain.SellerVO">
-	SELECT * FROM seller WHERE member_id = #{member_id}
-</select>
 
+<select id="read" resultType="kr.co.domain.SellerVO">
+	SELECT * FROM seller WHERE seller_id = #{seller_id}
+</select>
+<!--
 <select id="updateUI" resultType="kr.co.domain.SellerVO">
 		SELECT * FROM seller WHERE member_id = #{member_id}
 </select>
