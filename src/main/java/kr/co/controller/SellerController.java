@@ -62,46 +62,41 @@ public class SellerController {
 		model.addAttribute("vo", vo);
 		return "seller/read";	
 	}
-//	
-//	@RequestMapping(value = "/update/{member_id}", method = RequestMethod.GET)
-//	public String updateUI(@PathVariable("member_id") String member_id, Model model) {
-//		MemberVO vo = sService.updateUI(member_id);
-//		model.addAttribute("vo", vo);		
-//		return "/member/update";
-//	}
-//	
-//	@RequestMapping(value = "/update", method = RequestMethod.POST)
-//	public String update(MemberVO vo) {
-//		sService.update(vo);		
-//		return "redirect:/member/read/"+vo.getMember_id();
-//	}
-//	
-//	 @RequestMapping(value = "/delete/{member_id}", method = RequestMethod.GET)
-//	 public String deleteUI(@PathVariable("member_id") String member_id, Model model) { 
-//		 MemberVO vo = sService.deleteUI(member_id); 
-//		 model.addAttribute("vo", vo);
-//		 
-//		 return "member/delete"; 
-//	}
-//	
-//	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-//	public String delete(MemberVO vo) {
-//		sService.delete(vo);		
-//		return "redirect:/";
-//	}
-//	
-//	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
-//	@ResponseBody
-//	public int passChk(MemberVO vo) {
-//		int result = sService.passChk(vo);
-//		return result;
-//	}
-//	
-//	@RequestMapping(value = "/mypage/{member_id}", method = RequestMethod.GET)
-//	public String mypage(@PathVariable("member_id") String member_id) {
-//		
-//		return "member/mypage";
-//	}
+	
+	@RequestMapping(value = "/update/{seller_id}", method = RequestMethod.GET)
+	public String updateUI(@PathVariable("seller_id") String seller_id, Model model) {
+		SellerVO vo = sService.updateUI(seller_id);
+		model.addAttribute("vo", vo);		
+		return "/seller/update";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(SellerVO vo) {
+		sService.update(vo);		
+		return "redirect:/seller/read/"+vo.getSeller_id();
+	}
+	
+	 @RequestMapping(value = "/delete/{seller_id}", method = RequestMethod.GET)
+	 public String deleteUI(@PathVariable("seller_id") String seller_id, Model model) { 
+		 SellerVO vo = sService.deleteUI(seller_id); 
+		 model.addAttribute("vo", vo);
+		 
+		 return "seller/delete"; 
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String delete(SellerVO vo) {
+		sService.delete(vo);		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
+	@ResponseBody
+	public int passChk(SellerVO vo) {
+		int result = sService.passChk(vo);
+		return result;
+	}
+
 	
 
 }

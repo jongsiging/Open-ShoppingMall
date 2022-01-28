@@ -24,7 +24,7 @@
 </select>
 
 <update id="update">
-		UPDATE member SET member_id = #{member_id}, member_email = #{member_email}, member_address = #{member_address}, 
+		UPDATE member SET member_email = #{member_email}, member_address = #{member_address}, 
 		member_detail_address = #{member_detail_address}, member_phone_number = #{member_phone_number}, member_updatedate = sysdate 
 		WHERE member_id = #{member_id} AND member_pw = #{member_pw}
 </update>

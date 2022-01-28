@@ -17,32 +17,31 @@
 <select id="read" resultType="kr.co.domain.SellerVO">
 	SELECT * FROM seller WHERE seller_id = #{seller_id}
 </select>
-<!--
+
 <select id="updateUI" resultType="kr.co.domain.SellerVO">
-		SELECT * FROM seller WHERE member_id = #{member_id}
+		SELECT * FROM seller WHERE seller_id = #{seller_id}
 </select>
 
 <update id="update">
-		UPDATE seller SET member_id = #{member_id}, member_email = #{member_email}, member_address = #{member_address}, 
-		member_detail_address = #{member_detail_address}, member_phone_number = #{member_phone_number}, member_updatedate = sysdate 
-		WHERE member_id = #{member_id} AND member_pw = #{member_pw}
+		UPDATE seller SET seller_email = #{seller_email}, seller_phone = #{seller_phone} WHERE seller_id = #{seller_id} AND seller_pw = #{seller_pw}
 </update>
-
+<!--
 <select id="login" resultType="kr.co.domain.SellerVO">
 	SELECT member_id, member_name FROM seller WHERE member_id = #{member_id} AND member_pw = #{member_pw}
 </select>
-
-<select id="deleteUI" resultType="kr.co.domain.SellerVO">
-		SELECT * FROM seller WHERE member_id = #{member_id}
-</select>
-
+ -->
 <delete id="delete">
-	DELETE FROM seller WHERE member_id = #{member_id} AND member_pw = #{member_pw}
+	DELETE FROM seller WHERE seller_id = #{seller_id} AND seller_pw = #{seller_pw}
 </delete>
 
-<select id="passChk" resultType="int">
-	SELECT COUNT(*) FROM seller WHERE member_id = #{member_id} AND member_pw = #{member_pw}
-</select> -->
+ 
+<select id="deleteUI" resultType="kr.co.domain.SellerVO">
+	SELECT * FROM seller WHERE seller_id = #{seller_id}
+</select>
+ 
+<select id="passChk" resultType="Integer">
+	SELECT COUNT(*) FROM seller WHERE seller_id = #{seller_id} AND seller_pw = #{seller_pw}
+</select>
 
 
 </mapper>

@@ -44,52 +44,37 @@
 <jsp:include page="../header.jsp" />
 <jsp:include page="../sidebar.jsp" />
 
-<c:if test="${vo.member_id == login.member_id}">
+<%-- <c:if test="${vo.seller_id == login.seller_id}"> --%>
 	<div class="row mb-2 container">
 		<div class="col-md-10">
 			<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 				<div class="col p-4 d-flex flex-column position-static">
 
-					<form action="/member/update" method="post">
+					<form action="/seller/update" method="post">
 						
 						<div class="input-group mb-2">
 							<span class="input-group-text">아이디</span> 
-							<input readonly class="form-control" name="member_id" maxlength="15" value="${vo.member_id}">
+							<input readonly class="form-control" name="seller_id" maxlength="15" value="${vo.seller_id}">
 						</div>
 
 						<div class="input-group mb-2">
 							<span class="input-group-text">비밀번호</span> 
-							<input class="form-control" type="password" name="member_pw" maxlength="10" required>
+							<input class="form-control" type="password" name="seller_pw" maxlength="10" required>
 						</div>
 
 						<div class="input-group mb-2">
 							<span class="input-group-text">이름</span> 
-							<input readonly class="form-control" name="member_name" maxlength="15" value="${vo.member_name}">
-						</div>
-
-						<div class="input-group mb-2">
-							<span class="input-group-text">생년월일</span> 
-							<input readonly class="form-control" value="${fn:substring(vo.member_birthday, 0, 10)}" name="member_birthday">
+							<input readonly class="form-control" name="seller_name" maxlength="15" value="${vo.seller_name}">
 						</div>
 
 						<div class="input-group mb-2">
 							<span class="input-group-text">이메일</span> 
-							<input class="form-control" id="member_email" name="member_email" value="${vo.member_email}" required>
-						</div>
-
-						<div class="input-group mb-2">
-							<span class="input-group-text">주소</span> 
-							<input class="form-control" value="${vo.member_address}" id="member_address" name="member_address" required>
-						</div>
-
-						<div class="input-group mb-2">
-							<span class="input-group-text">상세주소</span> 
-							<input class="form-control" value="${vo.member_detail_address}" id="member_detail_address" name="member_detail_address" maxlength="10" required>
+							<input class="form-control" id="seller_email" name="seller_email" value="${vo.seller_email}" required>
 						</div>
 
 						<div class="input-group mb-2">
 							<span class="input-group-text">전화번호</span> 
-							<input class="form-control" value="${vo.member_phone_number}" id="member_phone_number" name="member_phone_number" maxlength="13" required>
+							<input class="form-control" value="${vo.seller_phone}" name="seller_phone" maxlength="13" required>
 						</div>
 
 						<button type="button" class="btn btn-secondary float-right" id="update">회원 정보 수정</button>
@@ -98,9 +83,9 @@
 			</div>
 		</div>
 	</div>
-</c:if>
+<%-- </c:if>
 
-<c:if test="${vo.member_id != login.member_id}">
+<c:if test="${vo.seller_id != login.seller_id}">
 	<div id="warning">
 		<img src="../../../resources/img/ban.png" width="350" height="350" id="ban">
 			<div id="warmen">
@@ -108,7 +93,7 @@
 			</div>
 		<button type="button" class="btn btn-danger" id="backhome">홈으로 되돌아가기</button>
 	</div>
-</c:if>
+</c:if> --%>
 
 <jsp:include page="../footer.jsp" />
 
@@ -127,7 +112,7 @@ function emailcheck(emailString) {
 $(document).ready(function() {
 	
 
-	$("#member_email").on('change', function(event){
+	$("#seller_email").on('change', function(event){
 		var emailString = $(this).val();
 		var validationResult = emailcheck(emailString);
 		if(validationResult == true){
@@ -142,60 +127,35 @@ $(document).ready(function() {
 		$("form").submit();
 	});
 	
-	document.getElementById("member_address").addEventListener("click", function(){ //주소입력칸을 클릭하면
-	    //카카오 지도 발생
-	    new daum.Postcode({
-	        oncomplete: function(data) { //선택시 입력값 세팅
-	            document.getElementById("#member_address").value = data.address; // 주소 넣기
-	            document.querySelector("input[name=member_detail_address]").focus(); //상세입력 포커싱
-	        }
-	    }).open();
-	});
-	
 	$("#update").click(function(event) {
 		event.preventDefault();		
-		//비밀번호를 입력하지 않으면 안바뀌게 하는 코드
-		var pw = $("[name='member_pw']").val();		
+		var pw = $("[name='seller_pw']").val();		
 		if(pw==''){
 			alert("비밀번호를 입력하여 주십시오");
 			return;
 		}
-		
-		if($("#member_email").val()==""){
-			alert("사용중인 이메일을 입력해주세요.");
-			$("#member_email").focus();
-			return false;
+		var email = $("[name='seller_email']").val();		
+		if(email==''){
+			alert("이메일를 입력하여 주십시오");
+			return;
 		}
-		
-		if($("#member_address").val()==""){
-			alert("주소를 검색하여 입력해주세요.");
-			$("#member_address").focus();
-			return false;
+		var seller_phone = $("[name='seller_phone']").val();		
+		if(seller_phone==''){
+			alert("전화번호를 입력하여 주십시오");
+			return;
 		}
-		
-		if($("#member_detail_address").val()==""){
-			alert("상세주소를 입력해주세요.");
-			$("#member_detail_address").focus();
-			return false;
-		}
-		if($("#member_phone_number").val()==""){
-			alert("사용중인 전화번호를 입력해주세요.");
-			$("#member_phone_number").focus();
-			return false;
-		}
-		
 		$.ajax({
-			url : "/member/passChk",
+			url : "/seller/passChk",
 			type : "POST",
 			dataType : "text",
 			data : {
-				member_id : $("[name='member_id']").val(),
-				member_pw : $("[name='member_pw']").val()
+				seller_id : $("[name='seller_id']").val(),
+				seller_pw : $("[name='seller_pw']").val()
 				
 			},
 			success: function(data){
 				if(data == 0){
-					alert("아이디 또는 패스워드가 틀렸습니다.");
+					alert("패스워드가 틀렸습니다.");
 					return;
 				}else{
 					$("form").submit();
@@ -203,13 +163,7 @@ $(document).ready(function() {
 			}
 		})
 		
-		
 	});
-	
-	
-	
-	
-	
 	
 });
 </script>
