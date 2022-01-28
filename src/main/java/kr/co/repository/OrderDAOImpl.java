@@ -81,15 +81,16 @@ public class OrderDAOImpl implements OrderDAO{
 		return sqlSession.selectList(NS+".list", member_id, rbs);
 	}
 
-	
+	@Override
+	public int getAmountForSeller(String seller_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".getAmountForSeller", seller_id);
+	}
 
+	@Override
+	public List<OrdersVO> orderlist(PageTO<OrdersVO> pt, String seller_id) {
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		return sqlSession.selectList(NS+".orderlist", seller_id, rbs);
+	}
 
-
-	
-
-	
-	
-	
-	
-	
 }

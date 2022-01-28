@@ -43,5 +43,10 @@
 	<select id="getAmountMember" resultType="Integer">
 		SELECT COUNT(order_id) FROM orders WHERE member_id = #{member_id}
 	</select>
-
+	<select id="getAmountForSeller" resultType="Integer">
+		select COUNT(*) from orders where item_no in (select item_no from item where seller_id = #{seller_id})
+	</select>
+	<select id="orderlist" resultType="kr.co.domain.OrdersVO">
+		select * from orders where item_no in (select item_no from item where seller_id = #{seller_id})
+	</select>
 </mapper>

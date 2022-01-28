@@ -174,5 +174,11 @@ public class ItemDAOImpl implements ItemDAO {
 		return sqlSession.selectList(NS+".listForSeller", seller_id, rbs);
 	}
 
+	@Override
+	public int getAmount(int item_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".getAmountItem", item_no);
+	}
+
 
 }

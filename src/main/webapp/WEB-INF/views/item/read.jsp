@@ -233,8 +233,17 @@ var item_price = ${ivo.item_price};
 				if(member_id == null || member_id == ""){
 					alert("로그인시 이용 가능합니다");
 					return;
+				}else{
+					$.getJSON("/item/getAmount/"+item_no, function(amount) {
+						if(amount < 1){
+							alert("해당 제품은 품절입니다.");
+						return;
+						}else{
+							location.assign("/order/insert/"+member_id+"/"+item_no);
+						}
+						
+					});
 				}
-				location.assign("/order/insert/"+member_id+"/"+item_no);
 			});
 		});
 		

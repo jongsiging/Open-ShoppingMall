@@ -119,6 +119,30 @@ public class OrderServiceImpl implements OrderService{
 		}
 	}
 
+	@Override
+	public PageTO<OrdersVO> orderlist(PageTO<OrdersVO> pt, String seller_id) {
+		int amount = oDao.getAmountForSeller(seller_id);
+		pt.setAmount(amount);
+		if(amount ==0) {
+			return null;
+		}else {
+		List<OrdersVO> list = oDao.orderlist(pt,seller_id);
+		pt.setList(list);
+		
+		list = pt.getList();
+		
+		for(int i=0; i<list.size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String file_name = fDao.getFile(item_no).get(0);
+			pt.getList().get(i).setFile_name(file_name);
+			String item_name = iDao.getItem_name(item_no);
+			pt.getList().get(i).setItem_name(item_name);
+		}
+		
+		return pt;
+		}	
+	}
+
 
 
 	

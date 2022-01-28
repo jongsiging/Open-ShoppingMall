@@ -91,4 +91,7 @@
 	<select id="listForSeller" resultType="kr.co.domain.ItemVO">
 		SELECT * FROM item WHERE seller_id = #{seller_id}
 	</select>
+	<select id="getAmountItem" resultType="Integer">
+		SELECT item_amount FROM item WHERE item_no = #{item_no}
+	</select>
 </mapper>

@@ -267,5 +267,21 @@ public class ItemController {
 
 		return entity;
 	}
+	
+	@RequestMapping(value = "/getAmount/{item_no}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> getAmount(@PathVariable("item_no") int item_no, Model model) {
+		ResponseEntity<Integer> entity = null;
+
+		try {
+			int amount = iService.getAmount(item_no);
+			model.addAttribute("amount", amount);
+			entity = new ResponseEntity<Integer>(amount, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
 
 }

@@ -19,7 +19,6 @@
 	<jsp:include page="../sidebar.jsp" />
 <div class="container" style=" font-size : small;">
 	<h4>상품 리스트</h4>
-	<a class="btn btn-outline-primary btn-sm" style="float: right;" href="/item/insert">상품등록</a>
 	<table class="table">
 		<thead>
 			<tr>
@@ -48,8 +47,6 @@
 					<td>${vo.item_amount}</td>
 					<td>${vo.item_regdate}</td>
 					<td>
-						<a class="btn btn-outline-primary btn-sm" href="/item/addItem/${vo.item_no}">추가</a>
-						<a class="btn btn-outline-primary btn-sm" href="/item/update/${vo.item_no}">수정</a>
 						<a class="btn btn-outline-primary btn-sm" data-item_no="${vo.item_no}" class="delete" href="/item/delete/${vo.item_no}">삭제</a>
 					</td>
 				</tr>
