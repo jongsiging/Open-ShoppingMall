@@ -163,5 +163,16 @@ public class ItemDAOImpl implements ItemDAO {
 		sqlSession.update(NS+".updateQuantity", item_no);
 	}
 
+	@Override
+	public int getAmountForSeller(String seller_id) {
+		return sqlSession.selectOne(NS+".getAmountForSeller",seller_id);
+	}
+
+	@Override
+	public List<ItemVO> listForSeller(PageTO<ItemVO> pt, String seller_id) {
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		return sqlSession.selectList(NS+".listForSeller", seller_id, rbs);
+	}
+
 
 }

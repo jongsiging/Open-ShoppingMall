@@ -6,9 +6,9 @@
 <mapper namespace="kr.co.item">
 	<insert id="insert">
 		INSERT INTO item
-		(item_no,item_name,item_category,item_size,item_color,item_price,discount_percentage,item_amount)
+		(item_no,item_name,item_category,item_size,item_color,item_price,discount_percentage,item_amount, seller_id)
 		VALUES
-		(seq_item_no.NEXTVAL,#{item_name},#{item_category},#{item_size},#{item_color},#{item_price},#{discount_percentage},#{item_amount})
+		(seq_item_no.NEXTVAL,#{item_name},#{item_category},#{item_size},#{item_color},#{item_price},#{discount_percentage},#{item_amount},#{seller_id})
 		<selectKey order="AFTER" keyProperty="item_no"
 			resultType="Integer">
 			SELECT seq_item_no.CURRVAL FROM dual
@@ -85,4 +85,10 @@
 	<update id="updateQuantity">
 		UPDATE item SET item_amount=item_amount-1 WHERE item_no = #{item_no}
 	</update>
+	<select id="getAmountForSeller" resultType="Integer">
+		SELECT COUNT(item_no) FROM item WHERE seller_id = #{seller_id}
+	</select>
+	<select id="listForSeller" resultType="kr.co.domain.ItemVO">
+		SELECT * FROM item WHERE seller_id = #{seller_id}
+	</select>
 </mapper>

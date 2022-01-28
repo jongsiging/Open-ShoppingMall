@@ -54,6 +54,10 @@ public interface ItemDAO {
 
 	void updateQuantity(int item_no);
 
+	int getAmountForSeller(String seller_id);
+
+	List<ItemVO> listForSeller(PageTO<ItemVO> pt, String seller_id);
+
 	
 
 
