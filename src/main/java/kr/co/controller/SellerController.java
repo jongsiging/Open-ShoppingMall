@@ -153,5 +153,22 @@ public class SellerController {
 		
 		model.addAttribute("pt", pt);
 	}
+	
+	@RequestMapping(value = "/updateItem/{item_no}", method = RequestMethod.GET)
+	public String updateUI(@PathVariable("item_no") int item_no, Model model) {
+		ItemVO vo = iService.updateUI(item_no);
+		
+		model.addAttribute("vo", vo);
+		
+		return "seller/updateItem";
+	}
+
+	@RequestMapping(value = "/updateItem", method = RequestMethod.POST)
+	public String update(ItemVO vo) {
+
+		iService.update(vo);
+
+		return "redirect:/seller/listForSeller/" + vo.getSeller_id()+"/1";
+	}
 
 }

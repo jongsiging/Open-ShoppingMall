@@ -48,7 +48,7 @@
 					<td>${vo.item_regdate}</td>
 					<td>
 						<a class="btn btn-outline-primary btn-sm" href="/seller/addItem/${sellerLogin.seller_id}/${vo.item_no}">추가</a>
-						<a class="btn btn-outline-primary btn-sm" href="/seller/update/${sellerLogin.seller_id}/${vo.item_no}">수정</a>
+						<a class="btn btn-outline-primary btn-sm" href="/seller/updateItem/${vo.item_no}">수정</a>
 						<a class="btn btn-outline-primary btn-sm" data-item_no="${vo.item_no}" class="delete" href="/seller/delete/${sellerLogin.seller_id}/${vo.item_no}">삭제</a>
 					</td>
 				</tr>
