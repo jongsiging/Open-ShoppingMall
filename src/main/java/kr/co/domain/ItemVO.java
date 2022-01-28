@@ -22,6 +22,7 @@ public class ItemVO implements Serializable{
 	private String[] deletefiles;
 	private String file_name;
 	private String ori_item_name;
+	private String seller_id;
 	
 	public ItemVO() {
 		// TODO Auto-generated constructor stub
@@ -64,6 +65,28 @@ public class ItemVO implements Serializable{
 		this.item_regdate = item_regdate;
 		this.insertfiles = insertfiles;
 		this.deletefiles = deletefiles;
+	}
+
+	
+	
+	public ItemVO(int item_no, String item_name, String item_category, String item_size, String item_color,
+			int item_price, int discount_percentage, int item_amount, String item_regdate, String[] insertfiles,
+			String[] deletefiles, String file_name, String ori_item_name, String seller_id) {
+		super();
+		this.item_no = item_no;
+		this.item_name = item_name;
+		this.item_category = item_category;
+		this.item_size = item_size;
+		this.item_color = item_color;
+		this.item_price = item_price;
+		this.discount_percentage = discount_percentage;
+		this.item_amount = item_amount;
+		this.item_regdate = item_regdate;
+		this.insertfiles = insertfiles;
+		this.deletefiles = deletefiles;
+		this.file_name = file_name;
+		this.ori_item_name = ori_item_name;
+		this.seller_id = seller_id;
 	}
 
 	public ItemVO(int item_no, String item_name, String file_name) {
@@ -205,6 +228,16 @@ public class ItemVO implements Serializable{
 
 	public void setOri_item_name(String ori_item_name) {
 		this.ori_item_name = ori_item_name;
+	}
+
+	
+	
+	public String getSeller_id() {
+		return seller_id;
+	}
+
+	public void setSeller_id(String seller_id) {
+		this.seller_id = seller_id;
 	}
 
 	@Override
