@@ -41,8 +41,7 @@
 
 <body>
 
-<jsp:include page="../header.jsp" />
-<jsp:include page="../sidebar.jsp" />
+<jsp:include page="header.jsp" />
 
 <%-- <c:if test="${vo.seller_id == login.seller_id}"> --%>
 	<div class="row mb-2 container">
@@ -95,7 +94,7 @@
 	</div>
 </c:if> --%>
 
-<jsp:include page="../footer.jsp" />
+<jsp:include page="footer.jsp" />
 
 
 

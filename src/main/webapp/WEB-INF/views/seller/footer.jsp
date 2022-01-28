@@ -9,7 +9,7 @@
 		<li class="nav-item"><a href="/" class="nav-link px-2 text-muted">홈</a></li>
 		<li class="nav-item"><a href="/item/list" class="nav-link px-2 text-muted">상품</a></li>
 		<li class="nav-item"><a href="/fnq/list" class="nav-link px-2 text-muted">게시판</a></li>
-      <li class="nav-item"><a href="/seller/loginUI" class="nav-link px-2 text-muted">판매자</a></li>
+      <li class="nav-item"><a href="" class="nav-link px-2 text-muted">판매자</a></li>
       <li class="nav-item"><a href="/manager" class="nav-link px-2 text-muted">관리자</a></li>
     </ul>
     <p class="text-center text-muted">&copy; 2022 Project</p>

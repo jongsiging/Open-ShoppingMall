@@ -20,4 +20,6 @@ public interface SellerDAO {
 
 	void delete(SellerVO vo);
 
+	SellerVO login(SellerVO vo);
+
 }

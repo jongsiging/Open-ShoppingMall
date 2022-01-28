@@ -16,8 +16,7 @@
 </head>
 <body>
 
-<jsp:include page="../header.jsp" />
-<jsp:include page="../sidebar.jsp" />
+<jsp:include page="header.jsp" />
 
 	<div class="row mb-2 container">
 		<div class="col-md-10">
@@ -59,7 +58,7 @@
 		</div>
 	</div>
 
-<jsp:include page="../footer.jsp" />
+<jsp:include page="footer.jsp" />
 
 
 
