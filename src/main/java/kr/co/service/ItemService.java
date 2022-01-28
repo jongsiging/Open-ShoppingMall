@@ -41,4 +41,6 @@ public interface ItemService {
 
 	PageTO<ItemVO> listForSeller(PageTO<ItemVO> pt, String seller_id);
 
+	int getAmount(int item_no);
+
 }

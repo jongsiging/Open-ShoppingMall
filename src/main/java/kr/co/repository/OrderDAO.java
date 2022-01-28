@@ -31,5 +31,9 @@ public interface OrderDAO {
 
 	public List<OrdersVO> list(PageTO<OrdersVO> pt, String member_id);
 
+	public int getAmountForSeller(String seller_id);
+
+	public List<OrdersVO> orderlist(PageTO<OrdersVO> pt, String seller_id);
+
 
 }

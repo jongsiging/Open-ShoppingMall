@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.domain.BoardVO;
 import kr.co.domain.CategoryVO;
 import kr.co.domain.ItemVO;
+import kr.co.domain.OrdersVO;
 import kr.co.domain.PageTO;
 import kr.co.domain.QnaVO;
 import kr.co.domain.ReviewVO;
 import kr.co.domain.SellerVO;
 import kr.co.service.CategoryService;
 import kr.co.service.ItemService;
+import kr.co.service.OrderService;
 import kr.co.service.QnaService;
 import kr.co.service.ReviewService;
 import kr.co.service.SellerService;
@@ -43,6 +45,9 @@ public class SellerController {
 	
 	@Inject
 	private ReviewService rService;
+	
+	@Inject
+	private OrderService oService;
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout() {
@@ -255,7 +260,7 @@ public class SellerController {
 	}
 	
 	@RequestMapping(value = "/reviewlist/{seller_id}", method = RequestMethod.GET)
-	public String getMyAllReplies(@PathVariable("seller_id") String seller_id,PageTO<ReviewVO> pt, Model model) {
+	public String reviewlist(@PathVariable("seller_id") String seller_id,PageTO<ReviewVO> pt, Model model) {
 		
 		pt.setCurPage(1);
 		
@@ -267,7 +272,7 @@ public class SellerController {
 	}
 	
 	@RequestMapping(value = "/reviewlist/{seller_id}/{curPage}", method = RequestMethod.GET)
-	public String getMyRepliesPage(@PathVariable("curPage") int curPage,@PathVariable("seller_id") String seller_id, PageTO<ReviewVO> pt, Model model) {
+	public String reviewlist(@PathVariable("curPage") int curPage,@PathVariable("seller_id") String seller_id, PageTO<ReviewVO> pt, Model model) {
 
 		pt.setCurPage(curPage);
 
@@ -277,5 +282,30 @@ public class SellerController {
 		
 		return "seller/reviewlist";
 	}
-
+	
+	@RequestMapping(value = "/orderlist/{seller_id}", method = RequestMethod.GET)
+	public String orderlist(PageTO<OrdersVO> pt,@PathVariable("seller_id") String seller_id, Model model) {
+		
+		pt.setCurPage(1);
+		
+		pt = oService.orderlist(pt,seller_id);
+		
+		model.addAttribute("pt", pt);
+		model.addAttribute("seller_id", seller_id);
+		
+		return "seller/orderlist";
+	}
+	
+	@RequestMapping(value = "/orderlist/{seller_id}/{curPage}", method = RequestMethod.GET)
+	public String orderlist(PageTO<OrdersVO> pt,@PathVariable("curPage") int curPage,@PathVariable("seller_id") String seller_id, Model model) {
+		
+		pt.setCurPage(curPage);
+		
+		pt = oService.orderlist(pt, seller_id);
+		
+		model.addAttribute("pt", pt);
+		model.addAttribute("seller_id", seller_id);
+		
+		return "seller/orderlist";
+	}
 }

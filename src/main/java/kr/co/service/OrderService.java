@@ -33,4 +33,7 @@ public interface OrderService {
 
 	public PageTO<OrdersVO> list(PageTO<OrdersVO> pt, String member_id);
 
+
+	public PageTO<OrdersVO> orderlist(PageTO<OrdersVO> pt, String seller_id);
+
 }

@@ -183,6 +183,11 @@ public class ItemServiceImpl implements ItemService {
 		
 		return pt;
 	}
+	@Override
+	public int getAmount(int item_no) {
+		// TODO Auto-generated method stub
+		return iDao.getAmount(item_no);
+	}
 
 
 
