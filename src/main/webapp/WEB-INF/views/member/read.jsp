@@ -60,8 +60,7 @@
 						
 					<div class="input-group mb-2">
 						<span class="input-group-text">이메일</span> 
-						<input readonly class="form-control" name="member_email01" value="${vo.member_email}">
-						<input class="form-control" name="member_email" id="member_email" type="hidden">
+						<input readonly class="form-control" value="${vo.member_email}">
 					</div>					
 						
 					<div class="input-group mb-2">
