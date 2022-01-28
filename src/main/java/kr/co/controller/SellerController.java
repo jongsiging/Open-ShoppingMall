@@ -170,5 +170,29 @@ public class SellerController {
 
 		return "redirect:/seller/listForSeller/" + vo.getSeller_id()+"/1";
 	}
+	
+	@RequestMapping(value = "/addItem/{item_no}", method = RequestMethod.GET)
+	public String addItemUI(@PathVariable("item_no") int item_no, Model model) {
+		ItemVO vo = iService.updateUI(item_no);
+		
+		model.addAttribute("vo", vo);
+		
+		return "seller/addItem";
+	}
+	
+	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
+	public String addItem(ItemVO vo) {
+		
+		iService.addItem(vo);
+		
+		return "redirect:/seller/listForSeller/" + vo.getSeller_id()+"/1";
+	}
+	@RequestMapping(value = "/delete/{seller_id}/{item_no}", method = RequestMethod.GET)
+	public String delete(@PathVariable("seller_id") String seller_id,@PathVariable("item_no") int item_no) {
+		
+		iService.delete(item_no);
+		
+		return "redirect:/seller/listForSeller/" + seller_id+"/1";
+	}
 
 }
