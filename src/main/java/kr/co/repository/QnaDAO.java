@@ -30,5 +30,9 @@ public interface QnaDAO {
 
 	void delete(int qna_no);
 
+	int getAmountForSeller(String seller_id);
+
+	List<QnaVO> qnalist(PageTO<QnaVO> pt, String seller_id);
+
 
 }
