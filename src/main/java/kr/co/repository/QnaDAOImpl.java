@@ -83,5 +83,17 @@ public class QnaDAOImpl implements QnaDAO {
 		sqlSession.delete(NS+".delete", qna_no);
 	}
 
+	@Override
+	public int getAmountForSeller(String seller_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".getAmountForSeller",seller_id);
+	}
+
+	@Override
+	public List<QnaVO> qnalist(PageTO<QnaVO> pt, String seller_id) {
+		RowBounds rbs = new RowBounds(pt.getStartNum() - 1, pt.getPerPage());
+		return sqlSession.selectList(NS +".qnalist", seller_id, rbs);
+	}
+
 
 }

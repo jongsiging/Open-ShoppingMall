@@ -14,4 +14,6 @@ select * from seller
 
 select * from item
 
-select * from QNA where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = 'm001'))
+select * from qna where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = 'm001'))
+select * from review where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = 'm001'))
+select * from orders where item_no in (select item_no from item where seller_id = 'm001')

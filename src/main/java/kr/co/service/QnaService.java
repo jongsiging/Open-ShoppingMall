@@ -23,4 +23,6 @@ public interface QnaService {
 	void update(QnaVO vo);
 
 	void delete(int qna_no);
+
+	PageTO<QnaVO> qnalist(PageTO<QnaVO> pt, String seller_id);
 }

@@ -48,4 +48,11 @@
 	<delete id="delete">
 		DELETE FROM qna WHERE qna_no = #{qna_no}
 	</delete>
+	<select id="getAmountForSeller" resultType="Integer">
+		select COUNT(*) from qna where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = #{seller_id}))
+	</select>
+	<select id="qnalist" resultType="kr.co.domain.QnaVO">
+		select * from qna where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = #{seller_id}))
+	</select>
+	
 </mapper>

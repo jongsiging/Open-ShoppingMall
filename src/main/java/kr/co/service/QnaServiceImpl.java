@@ -126,5 +126,29 @@ public class QnaServiceImpl implements QnaService {
 		qDao.delete(qna_no);
 		
 	}
-
+	@Override
+	public PageTO<QnaVO> qnalist(PageTO<QnaVO> pt, String seller_id) {
+		int amount = qDao.getAmountForSeller(seller_id);
+		pt.setAmount(amount);
+		if(amount ==0) {
+			return null;
+		}else {
+		List<QnaVO> list = qDao.qnalist(pt, seller_id);
+		pt.setList(list);
+		
+		list = pt.getList();
+		for(int i=0; i<list.size(); i++) {
+			int boad_no = pt.getList().get(i).getBoard_no();
+			int item_no = bDao.selectItem_no(boad_no);
+			pt.getList().get(i).setItem_no(item_no);
+			String file_name = fDao.getFile(item_no).get(0);
+			pt.getList().get(i).setFile_name(file_name);
+			String item_name = iDao.getItem_name(item_no);
+			pt.getList().get(i).setItem_name(item_name);
+		}
+		return pt;
+		}
+	}
+	
+	
 }

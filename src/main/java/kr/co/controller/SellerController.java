@@ -3,6 +3,8 @@ package kr.co.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +16,11 @@ import kr.co.domain.BoardVO;
 import kr.co.domain.CategoryVO;
 import kr.co.domain.ItemVO;
 import kr.co.domain.PageTO;
+import kr.co.domain.QnaVO;
 import kr.co.domain.SellerVO;
 import kr.co.service.CategoryService;
 import kr.co.service.ItemService;
+import kr.co.service.QnaService;
 import kr.co.service.SellerService;
 
 @Controller
@@ -31,6 +35,9 @@ public class SellerController {
 	
 	@Inject
 	private ItemService iService;
+	
+	@Inject
+	private QnaService qService;
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout() {
@@ -193,6 +200,53 @@ public class SellerController {
 		iService.delete(item_no);
 		
 		return "redirect:/seller/listForSeller/" + seller_id+"/1";
+	}
+	
+	@RequestMapping(value = "/qnalist/{seller_id}", method = RequestMethod.GET)
+	public String qnalist(@PathVariable("seller_id") String seller_id,PageTO<QnaVO> pt, Model model) {
+		
+		pt.setCurPage(1);
+		
+		pt = qService.qnalist(pt, seller_id);
+		
+		model.addAttribute("pt", pt);
+		
+		return "seller/qnalist";
+	}
+	@RequestMapping(value = "/qnalist/{seller_id}/{curPage}", method = RequestMethod.GET)
+	public String qnalist(@PathVariable("seller_id") String seller_id,@PathVariable("curPage") int curPage,PageTO<QnaVO> pt, Model model) {
+
+		pt.setCurPage(curPage);
+
+		pt = qService.qnalist(pt, seller_id);
+		
+		model.addAttribute("pt", pt);
+		
+		return "seller/qnalist";
+	}
+	@RequestMapping(value = "/qnaUpdate/{qna_no}", method = RequestMethod.GET)
+	public String qnaUpdateUI(@PathVariable("qna_no") int qna_no, Model model) {
+
+		QnaVO vo = qService.updateUI(qna_no);
+
+		model.addAttribute("vo", vo);
+
+		return "/seller/qnaUpdate";
+	}
+
+	@RequestMapping(value = "/qnaUpdate", method = RequestMethod.POST)
+	public String update(QnaVO vo, String seller_id) {
+
+		qService.update(vo);
+		
+		return "redirect:/seller/qnalist/"+seller_id;
+	}
+	@RequestMapping(value = "/qnaDelete/{qna_no}/{seller_id}", method = RequestMethod.GET)
+	public String delete(@PathVariable("qna_no") int qna_no, @PathVariable("seller_id") String seller_id) {
+		
+		qService.delete(qna_no);
+
+		return "redirect:/seller/qnalist/"+seller_id;
 	}
 
 }
