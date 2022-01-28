@@ -39,4 +39,6 @@ public interface ItemService {
 
 	List<OrdersVO> listForRank();
 
+	PageTO<ItemVO> listForSeller(PageTO<ItemVO> pt, String seller_id);
+
 }

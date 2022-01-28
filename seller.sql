@@ -11,3 +11,5 @@ CREATE TABLE seller(
 )
 
 select * from seller
+
+select * from item

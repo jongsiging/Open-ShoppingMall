@@ -161,7 +161,7 @@ height : 38px;
           
           <c:when test="${not empty sellerLogin}">
             <li><a href="/" class="nav-link px-2 link-secondary text-dark">Home</a></li>
-           <li><a href="/item/listofall/" class="nav-link px-2 link-dark text-dark">아이템</a></li>
+           <li><a href="/seller/listForSeller/${sellerLogin.seller_id}/1" class="nav-link px-2 link-dark text-dark">아이템</a></li>
            <li><a href="/order/detailAll/1" class="nav-link px-2 link-dark text-dark">주문 목록</a></li>
            <li><a href="/Myreplies/listOfAll" class="nav-link px-2 link-dark text-dark">리뷰 목록</a></li>
            <li><a href="/qna/listOfAll" class="nav-link px-2 link-dark text-dark">QnA 목록</a></li>

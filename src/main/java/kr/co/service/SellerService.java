@@ -1,5 +1,7 @@
 package kr.co.service;
 
+import kr.co.domain.BoardVO;
+import kr.co.domain.ItemVO;
 import kr.co.domain.SellerVO;
 
 public interface SellerService {
@@ -21,5 +23,7 @@ public interface SellerService {
 	void delete(SellerVO vo);
 
 	SellerVO login(SellerVO vo);
+
+	void insert(ItemVO ivo, BoardVO bvo);
 
 }

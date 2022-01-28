@@ -173,6 +173,16 @@ public class ItemServiceImpl implements ItemService {
 		
 		return list;
 	}
+	@Override
+	public PageTO<ItemVO> listForSeller(PageTO<ItemVO> pt, String seller_id) {
+		int amount = iDao.getAmountForSeller(seller_id);
+		pt.setAmount(amount);
+		
+		List<ItemVO> list = iDao.listForSeller(pt, seller_id);
+		pt.setList(list);
+		
+		return pt;
+	}
 
 
 
