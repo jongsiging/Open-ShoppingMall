@@ -104,10 +104,9 @@ public class ItemController {
 	
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
 	public String addItem(ItemVO vo) {
-		int item_no = vo.getItem_no();
-		System.out.println(item_no);
+		
 		iService.addItem(vo);
-		System.out.println(vo.getItem_no());
+		
 		return "redirect:/item/read/" + vo.getItem_no();
 	}
 	
