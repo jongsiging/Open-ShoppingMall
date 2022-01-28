@@ -42,12 +42,23 @@
 	
 	<beans:bean id="logoutInterceptor" class="kr.co.interceptor.LogoutInterceptor">
     </beans:bean> 
+    
+    <beans:bean id="sellerLoginInterceptor" class="kr.co.interceptor.SellerLoginInterceptor">
+	</beans:bean>
+	
+    <beans:bean id="sellerLogoutInterceptor" class="kr.co.interceptor.SellerLogoutInterceptor">
+    </beans:bean> 
+    
 	
 
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/login"/>
 			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/seller/login"/>
+			<beans:ref bean="sellerLoginInterceptor"/>
 		</interceptor>
 		
 		<interceptor>
@@ -78,6 +89,12 @@
          <mapping path="/member/logout"/>
          <mapping path="/member/delete"/>
          <beans:ref bean="logoutInterceptor"/>
+      	</interceptor>
+      	
+      	<interceptor>
+         <mapping path="/seller/logout"/>
+         <mapping path="/seller/delete"/>
+         <beans:ref bean="sellerLogoutInterceptor"/>
       	</interceptor>
 		
 	</interceptors>

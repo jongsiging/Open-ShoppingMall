@@ -23,18 +23,19 @@ public class SellerController {
 //		return "redirect:/";
 //	}
 //	
-//	@RequestMapping(value = "/login", method = RequestMethod.POST)
-//	public String loginPost(MemberVO vo, Model model) {
-//		MemberVO login = sService.login(vo);		
-//		model.addAttribute("login", login);	
-//		return "member/read";
-//	}
-//	
-//	@RequestMapping(value = "/loginUI", method = RequestMethod.GET)
-//	public String login() {
-//		return "member/login";
-//	}
-//	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginPost(SellerVO vo, Model model) {
+		SellerVO sellerLogin = sService.login(vo);	
+		System.out.println(sellerLogin);
+		model.addAttribute("sellerLogin", sellerLogin);	
+		return "seller/read";
+	}
+	
+	@RequestMapping(value = "/loginUI", method = RequestMethod.GET)
+	public String login() {
+		return "seller/login";
+	}
+	
 	@RequestMapping(value = "/idcheck", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
 	@ResponseBody
 	public String idcheck(String seller_id) {
@@ -95,6 +96,11 @@ public class SellerController {
 	public int passChk(SellerVO vo) {
 		int result = sService.passChk(vo);
 		return result;
+	}
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String main() {
+		return "seller/main";
 	}
 
 	

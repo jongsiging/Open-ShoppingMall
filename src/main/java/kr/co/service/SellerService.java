@@ -20,4 +20,6 @@ public interface SellerService {
 
 	void delete(SellerVO vo);
 
+	SellerVO login(SellerVO vo);
+
 }

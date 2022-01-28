@@ -59,5 +59,11 @@ public class SellerDAOImpl implements SellerDAO {
 	public void delete(SellerVO vo) {
 		sqlSession.delete(NS+".delete", vo);
 	}
+
+	@Override
+	public SellerVO login(SellerVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".login", vo);
+	}
 	
 }

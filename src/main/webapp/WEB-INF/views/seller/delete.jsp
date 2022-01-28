@@ -49,8 +49,7 @@ form {
 </head>
 <body>
 
-<jsp:include page="../header.jsp" />
-<jsp:include page="../sidebar.jsp" />
+<jsp:include page="header.jsp" />
 
 <%-- 		<c:if test="${vo.seller_id == login.seller_id}"> --%>
 			<div class="container" style="margin-left: 29%; margin-top: 100px; margin-bottom: 300px; width: 300px;">
@@ -76,7 +75,7 @@ form {
 	</div>
 </c:if> --%>
 	
-<jsp:include page="../footer.jsp" />
+<jsp:include page="footer.jsp" />
 	
 </body>
 

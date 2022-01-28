@@ -58,5 +58,11 @@ public class SellerServiceImpl implements SellerService {
 	public void delete(SellerVO vo) {
 		sDao.delete(vo);
 	}
+
+	@Override
+	public SellerVO login(SellerVO vo) {
+		// TODO Auto-generated method stub
+		return sDao.login(vo);
+	}
 	
 }
