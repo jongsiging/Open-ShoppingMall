@@ -32,7 +32,6 @@ public class SellerLoginInterceptor extends HandlerInterceptorAdapter{
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("sellerLogin", sellerLogin);	
-		System.out.println(sellerLogin);
 		
 		 String where = (String) session.getAttribute("where");
 		  

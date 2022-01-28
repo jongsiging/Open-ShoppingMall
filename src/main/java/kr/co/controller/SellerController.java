@@ -18,15 +18,14 @@ public class SellerController {
 	@Inject
 	private SellerService sService;
 	
-//	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-//	public String logout() {
-//		return "redirect:/";
-//	}
-//	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout() {
+		return "redirect:/seller";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(SellerVO vo, Model model) {
 		SellerVO sellerLogin = sService.login(vo);	
-		System.out.println(sellerLogin);
 		model.addAttribute("sellerLogin", sellerLogin);	
 		return "seller/read";
 	}
