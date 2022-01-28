@@ -100,6 +100,18 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.selectList(NS +".listOfAll", null, rbs);
 	}
 
+	@Override
+	public int getAmountForSeller(String seller_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".getAmountForSeller", seller_id);
+	}
+
+	@Override
+	public List<ReviewVO> reviewlist(PageTO<ReviewVO> pt, String seller_id) {
+		RowBounds rbs = new RowBounds(pt.getStartNum() - 1, pt.getPerPage());
+		return sqlSession.selectList(NS +".reviewlist", seller_id, rbs);
+	}
+
 
 
 

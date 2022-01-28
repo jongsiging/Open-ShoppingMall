@@ -17,10 +17,12 @@ import kr.co.domain.CategoryVO;
 import kr.co.domain.ItemVO;
 import kr.co.domain.PageTO;
 import kr.co.domain.QnaVO;
+import kr.co.domain.ReviewVO;
 import kr.co.domain.SellerVO;
 import kr.co.service.CategoryService;
 import kr.co.service.ItemService;
 import kr.co.service.QnaService;
+import kr.co.service.ReviewService;
 import kr.co.service.SellerService;
 
 @Controller
@@ -38,6 +40,9 @@ public class SellerController {
 	
 	@Inject
 	private QnaService qService;
+	
+	@Inject
+	private ReviewService rService;
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout() {
@@ -247,6 +252,30 @@ public class SellerController {
 		qService.delete(qna_no);
 
 		return "redirect:/seller/qnalist/"+seller_id;
+	}
+	
+	@RequestMapping(value = "/reviewlist/{seller_id}", method = RequestMethod.GET)
+	public String getMyAllReplies(@PathVariable("seller_id") String seller_id,PageTO<ReviewVO> pt, Model model) {
+		
+		pt.setCurPage(1);
+		
+		pt = rService.reviewlist(pt, seller_id);
+		
+		model.addAttribute("pt", pt);
+		
+		return "seller/reviewlist";
+	}
+	
+	@RequestMapping(value = "/reviewlist/{seller_id}/{curPage}", method = RequestMethod.GET)
+	public String getMyRepliesPage(@PathVariable("curPage") int curPage,@PathVariable("seller_id") String seller_id, PageTO<ReviewVO> pt, Model model) {
+
+		pt.setCurPage(curPage);
+
+		pt = rService.reviewlist(pt, seller_id);
+		
+		model.addAttribute("pt", pt);
+		
+		return "seller/reviewlist";
 	}
 
 }

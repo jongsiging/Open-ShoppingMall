@@ -12,6 +12,8 @@ CREATE TABLE seller(
 
 select * from seller
 
+select * from review
+select * from qna
 select * from item
 
 select * from qna where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = 'm001'))
