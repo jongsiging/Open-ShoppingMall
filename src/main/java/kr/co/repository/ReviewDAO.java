@@ -30,4 +30,8 @@ public interface ReviewDAO {
 
 	List<ReviewVO> listOfAll(PageTO<ReviewVO> pt);
 
+	int getAmountForSeller(String seller_id);
+
+	List<ReviewVO> reviewlist(PageTO<ReviewVO> pt, String seller_id);
+
 }

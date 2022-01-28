@@ -24,4 +24,6 @@ public interface ReviewService {
 
 	PageTO<ReviewVO> listOfAll(PageTO<ReviewVO> pt);
 
+	PageTO<ReviewVO> reviewlist(PageTO<ReviewVO> pt, String seller_id);
+
 }

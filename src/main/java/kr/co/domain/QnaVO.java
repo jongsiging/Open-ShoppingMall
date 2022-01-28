@@ -15,9 +15,6 @@ public class QnaVO implements Serializable {
 	private String qna_regdate;
 	private String qna_updatedate;
 	private String qna_answer;
-	private int qna_repRoot;
-	private int qna_repStep;
-	private int qna_repIndent;
 	private int item_no;
 	private String item_name;
 	private String file_name;
@@ -26,7 +23,7 @@ public class QnaVO implements Serializable {
 	}
 
 	public QnaVO(int qna_no, int board_no, String member_id, String qna_title, String qna_content, String qna_regdate,
-			String qna_updatedate, String qna_answer, int qna_repRoot, int qna_repStep, int qna_repIndent) {
+			String qna_updatedate, String qna_answer, int item_no, String item_name, String file_name) {
 		super();
 		this.qna_no = qna_no;
 		this.board_no = board_no;
@@ -36,28 +33,6 @@ public class QnaVO implements Serializable {
 		this.qna_regdate = qna_regdate;
 		this.qna_updatedate = qna_updatedate;
 		this.qna_answer = qna_answer;
-		this.qna_repRoot = qna_repRoot;
-		this.qna_repStep = qna_repStep;
-		this.qna_repIndent = qna_repIndent;
-	}
-	
-
-
-	public QnaVO(int qna_no, int board_no, String member_id, String qna_title, String qna_content, String qna_regdate,
-			String qna_updatedate, String qna_answer, int qna_repRoot, int qna_repStep, int qna_repIndent, int item_no,
-			String item_name, String file_name) {
-		super();
-		this.qna_no = qna_no;
-		this.board_no = board_no;
-		this.member_id = member_id;
-		this.qna_title = qna_title;
-		this.qna_content = qna_content;
-		this.qna_regdate = qna_regdate;
-		this.qna_updatedate = qna_updatedate;
-		this.qna_answer = qna_answer;
-		this.qna_repRoot = qna_repRoot;
-		this.qna_repStep = qna_repStep;
-		this.qna_repIndent = qna_repIndent;
 		this.item_no = item_no;
 		this.item_name = item_name;
 		this.file_name = file_name;
@@ -127,29 +102,6 @@ public class QnaVO implements Serializable {
 		this.qna_answer = qna_answer;
 	}
 
-	public int getQna_repRoot() {
-		return qna_repRoot;
-	}
-
-	public void setQna_repRoot(int qna_repRoot) {
-		this.qna_repRoot = qna_repRoot;
-	}
-
-	public int getQna_repStep() {
-		return qna_repStep;
-	}
-
-	public void setQna_repStep(int qna_repStep) {
-		this.qna_repStep = qna_repStep;
-	}
-
-	public int getQna_repIndent() {
-		return qna_repIndent;
-	}
-
-	public void setQna_repIndent(int qna_repIndent) {
-		this.qna_repIndent = qna_repIndent;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -195,8 +147,7 @@ public class QnaVO implements Serializable {
 	public String toString() {
 		return "{'qna_no':" + qna_no + ", 'board_no':" + board_no + ", 'member_id':'" + member_id + "', 'qna_title':'"
 				+ qna_title + "', 'qna_content':'" + qna_content + "', 'qna_regdate':'" + qna_regdate + "', 'qna_updatedate':'"
-				+ qna_updatedate + "', 'qna_answer':'" + qna_answer + "', 'qna_repRoot':'" + qna_repRoot + "', 'qna_repStep':'"
-				+ qna_repStep + "', 'qna_repIndent':'" + qna_repIndent + "', 'item_no':" + item_no + ", 'item_name':'" + item_name
+				+ qna_updatedate + "', 'qna_answer':'" + qna_answer + "', 'item_no':" + item_no + ", 'item_name':'" + item_name
 				+ "', 'file_name':'" + file_name + "'}";
 	}
 
