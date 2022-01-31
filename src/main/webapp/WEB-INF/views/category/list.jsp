@@ -23,28 +23,30 @@
 	<div class="container" style=" font-size : small;">
 	<h4>카테고리 리스트</h4>
 	<a class="btn btn-outline-primary btn-sm" style="float: right;" href="/category/insert">카테고리 등록</a>
-	<table class="table">
-		<thead>
-			<th scope="col">no</th>
-			<th scope="col">카테고리명</th>
-			<th scope="col">아이템명</th>
-			<th></th>
-		</thead>
-		<tbody>
-			<c:forEach items="${pt.list}" var="vo" varStatus="status">
+		<table class="table">
+			<thead>
 				<tr>
-					<th scope="row">${status.count}</th>
-					<td>${vo.item_category}</td>
-					<td>${vo.item_name}</td>
-					<td>
-						<a class="btn btn-outline-primary btn-sm" href="/category/update/${vo.item_name}">수정</a>
-						<a class="btn btn-outline-primary btn-sm category_delete" href="/category/delete/${vo.item_name}">삭제</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<div style="margin-left: 40%">
+					<th scope="col">no</th>
+					<th scope="col">카테고리명</th>
+					<th scope="col">아이템명</th>
+					<th scope="col">비고</th>
+				<tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${pt.list}" var="vo" varStatus="status">
+					<tr>
+						<td scope="row">${status.count}</td>
+						<td>${vo.item_category}</td>
+						<td>${vo.item_name}</td>
+						<td><a class="btn btn-outline-primary btn-sm"
+							href="/category/update/${vo.item_name}">수정</a> <a
+							class="btn btn-outline-primary btn-sm category_delete"
+							href="/category/delete/${vo.item_name}">삭제</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<div style="margin-left: 40%">
 		<jsp:include page="page.jsp" />
 	</div>
 	</div>

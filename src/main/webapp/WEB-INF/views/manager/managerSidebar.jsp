@@ -28,12 +28,12 @@
 	<div class="container-fluid">
 		<div class="row">
 			<nav id="sidebarMenu"
-				class="col-md-3 col-lg-2 d-md-block  sidebar collapse">
+				class="col-md-3 col-lg-2 d-md-block sidebar collapse">
 				<div class="sidebar-sticky pt-3">
 
 
 					<h6
-						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-light font-weight-bord">
+						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 font-weight-bord">
 						<span>Stats Menu</span> <a
 							class="d-flex align-items-center text-muted" href="#"
 							aria-label="Add a new report"> <span
@@ -42,39 +42,39 @@
 					</h6>
 					<ul class="nav flex-column">
 						<li class="nav-item"><a
-							class="nav-link active text-light font-weight-bord"
+							class="nav-link active font-weight-bord text-dark"
 							href="/manager/calendar"> <span data-feather="home"></span>
 								매출 달력 <span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a
-							class="nav-link text-light font-weight-bord"
+							class="nav-link font-weight-bord text-dark"
 							href="/manager/saleRank"> <span data-feather="file"></span>
 								이달의 판매량 순위
 						</a></li>
 						<li class="nav-item "><a
-							class="nav-link text-light font-weight-bord"
+							class="nav-link font-weight-bord text-dark"
 							href="/manager/likeRank"> <span data-feather="shopping-cart"></span>
 								인기(찜) 순위
 						</a></li>
 						<li class="nav-item"><a
-							class="nav-link text-light font-weight-bord"
+							class="nav-link font-weight-bord text-dark"
 							href="/manager/keywordRank"> <span data-feather="users"></span>
 								검색어 순위
 						</a></li>
 						<li class="nav-item"><a
-							class="nav-link text-light font-weight-bord"
+							class="nav-link font-weight-bord text-dark"
 							href="/manager/ageRank"> <span data-feather="bar-chart-2"></span>
 								연령대별 회원 수
 						</a></li>
 						<li class="nav-item"><a
-							class="nav-link text-light font-weight-bord"
+							class="nav-link font-weight-bord text-dark"
 							href="/manager/categoryRank"> <span data-feather="layers"></span>
 								카테고리별 판매1위 품목
 						</a></li>
 					</ul>
 
 					<h6
-						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-light font-weight-bord">
+						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 font-weight-bord">
 						<span>Saved reports</span> <a
 							class="d-flex align-items-center text-muted" href="#"
 							aria-label="Add a new report"> <span
@@ -83,7 +83,7 @@
 					</h6>
 					<ul class="nav flex-column mb-2">
 						<li class="nav-item"><a
-							class="nav-link text-light font-weight-bord" href="/fnq/list">
+							class="nav-link font-weight-bord text-dark" href="/fnq/list">
 								<span data-feather="file-text"></span> 자주 묻는 질문
 						</a></li>
 

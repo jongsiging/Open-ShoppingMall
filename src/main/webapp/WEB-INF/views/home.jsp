@@ -24,17 +24,20 @@
 
 	<jsp:include page="sidebar.jsp" />
 
-	<div class="container ">
+	<div class="container">
 		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img style="height: 400px;" src="/resources/img/manager00.jpg" class="d-block w-100" alt="...">
+					<img style="height: 400px;" src="/resources/img/1.PNG" class="d-block w-100" alt="...">
 				</div>
 				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/manager02.jpg" class="d-block w-100" alt="...">
+					<img style="height: 400px;" src="/resources/img/2.PNG" class="d-block w-100" alt="...">
 				</div>
 				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/manager03.png" class="d-block w-100" alt="...">
+					<img style="height: 400px;" src="/resources/img/3.PNG" class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img style="height: 400px;" src="/resources/img/4.PNG" class="d-block w-100" alt="...">
 				</div>
 			</div>
 		</div>
@@ -50,7 +53,7 @@
 	<jsp:include page="footer.jsp" />
 <script type="text/javascript">
 $(document).ready(function(){
- 	var vo = "${list}";
+	var vo = "${list}";
 	var arr = eval(vo);
 	for (var i=0; i<8; i++){
 		var item_no = arr[i].item_no;

@@ -24,7 +24,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<nav id="sidebarMenu"
-				class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+				class="col-md-3 col-lg-2 d-md-block sidebar collapse navbar-light"> 
 				<div class="sidebar-sticky pt-3">
 
 
@@ -58,7 +58,9 @@
 						</a>
 					</h6>
 					<ul class="nav flex-column mb-2">
-						
+						<li class="nav-item"><a class="nav-link text-muted" href="/menus/listOfAll">
+								<span data-feather="file-text"></span> 메뉴 관리
+						</a></li>
 						<li class="nav-item"><a class="nav-link text-muted" href="/category/list/">
 								<span data-feather="file-text"></span> 카테고리
 						</a></li>

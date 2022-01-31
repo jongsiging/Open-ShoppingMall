@@ -18,7 +18,7 @@ body {
 }
 
 #roll a {
-    color: white;
+    color: black;
     text-decoration: none;
  
 }
@@ -33,14 +33,14 @@ body {
     width: 120px;
     height: 38px;
     margin: 0;
-    color: white;
+    color: black;
 }
 
 
 #roll ul {
     position: relative;
     margin: 0;
-    color: white;
+    color: black;
 }
 
 #roll ol {
@@ -50,13 +50,13 @@ body {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    color: white;
+    color: black;
 }
 
 #roll li {
     height: 38px;
     line-height: 38px;
-    color: white;
+    color: black;
     text-overflow: ellipsis;
    white-space: nowrap;
    overflow: hidden;
@@ -81,7 +81,7 @@ position : absolute;
 }
 
 .cat-box .cat-label {
-color : white;
+color : black;
 height : inherit;
 width : 100px;
 cursor : pointer;
@@ -129,8 +129,8 @@ height : 38px;
 </style>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="div1">
-  <span class="navbar-brand mb-0 h1"><a class="nav-link text-light" href="/">DAPAN&DA</a></span>
+<nav class="navbar navbar-expand-lg navbar-light" id="div1">
+  <span class="navbar-brand mb-0 h1"><a class="nav-link text-dark" href="/">DAPAN&DA</a></span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -166,30 +166,11 @@ height : 38px;
 </nav>
 
 
-    <header class="bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom border-top">
       
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ml-5">
-      <c:choose>
-          <c:when test="${empty login}">
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ml-5 menus">
             <li><a href="/" class="nav-link px-2 link-secondary text-dark">Home</a></li>
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">좋아요
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">장바구니</a></li>
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">주문배송조회</a></li>
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">리뷰 목록</a></li>
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">QnA 목록</a></li>
-          </c:when>
-          
-          <c:when test="${not empty login}">
-            <li><a href="/" class="nav-link px-2 link-secondary text-dark">Home</a></li>
-           <li><a href="/likeitem/list/${login.member_id}" class="nav-link px-2 link-dark text-dark">좋아요
-           <li><a href="/cart/read/${login.member_id}" class="nav-link px-2 link-dark text-dark">장바구니</a></li>
-           <li><a href="/order/detail/${login.member_id}" class="nav-link px-2 link-dark text-dark">주문배송조회</a></li>
-           <li><a href="/Myreplies/list/${login.member_id}" class="nav-link px-2 link-dark text-dark">리뷰 목록</a></li>
-           <li><a href="/qna/listForMember/${login.member_id}" class="nav-link px-2 link-dark text-dark">QnA 목록</a></li>
-          </c:when>
-        </c:choose>
-     
       </ul>
 
       <div class="col-md-3 text-end">
@@ -210,7 +191,9 @@ height : 38px;
     
      <script type="text/javascript">
       var item_category = $(".cat-label").text();
-     
+     var member_id = "${login.member_id}";
+      
+      
      
       function enter_f(e){
       var keyword = document.getElementById("area-search").value;
@@ -242,6 +225,20 @@ height : 38px;
     }
    $(document).ready(function(){
       
+	   $.getJSON("/menus/list", function(result) {
+		   
+			for (var i = 0; i < result.length; i++) {
+				if(member_id == ""){
+					var msg = "<li><a href='/member/loginUI' class='nav-link px-2 link-dark text-dark'>"+result[i].menu_name+"</a></li>";
+					$(".menus").append(msg)
+				}else{
+					var msg = "<li><a href='"+result[i].menu_href+member_id+"' class='nav-link px-2 link-dark text-dark'>"+result[i].menu_name+"</a></li>";
+					$(".menus").append(msg)
+				}
+				
+			}
+		});
+	   
       $.getJSON("/category/categorylist", function(result) {
          for (var i = 0; i < result.length; i++) {
             var cat_items = result[i];

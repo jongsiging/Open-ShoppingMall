@@ -32,7 +32,7 @@
 
 
 
-	<div class="row mb-2 container">
+	<div class="row mb-2 container" style="margin-left: 20%;">
 		<div class="col-md-10">
 			<div style="margin-left: 13%;" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 				<div class="fileDrop"><div style="text-align: center;" class="uploadedList row"></div></div>
