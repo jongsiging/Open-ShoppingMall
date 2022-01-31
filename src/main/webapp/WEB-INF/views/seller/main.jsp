@@ -22,17 +22,24 @@
 
 	<jsp:include page="header.jsp" />
 
-	<div class="container ">
+	<div style="width: 100%; margin-bottom: 500px;">
 		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img style="height: 400px;" src="/resources/img/manager00.jpg" class="d-block w-100" alt="...">
-				</div>
-				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/manager02.jpg" class="d-block w-100" alt="...">
-				</div>
-				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/manager03.png" class="d-block w-100" alt="...">
+					<c:choose>
+						<c:when test="${empty sellerLogin}">
+							<a href="/seller/insert"> <img style="height: 400px;"
+								src="/resources/img/5.PNG" class="d-block w-100" alt="...">
+							</a>
+						</c:when>
+
+						<c:when test="${not empty sellerLogin}">
+							<a href="/seller/orderlist/${sellerLogin.seller_id}"> <img
+								style="height: 400px;" src="/resources/img/5.PNG"
+								class="d-block w-100" alt="...">
+							</a>
+						</c:when>
+					</c:choose>
 				</div>
 			</div>
 		</div>

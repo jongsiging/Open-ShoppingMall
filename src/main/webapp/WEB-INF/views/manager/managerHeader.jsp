@@ -23,11 +23,11 @@
 
 
 <style type="text/css">
-body {
+/* body {
 	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 	overflow-x: hidden;
 	overflow-y: auto;
-}
+} */
 </style>
 
 
@@ -42,9 +42,9 @@ body {
 
 
 
-	<nav class="navbar navbar-expand-lg navbar-light text-light">
+	<nav class="navbar navbar-expand-lg">
 		<span class="navbar-brand mb-0 h1 text-light ml-2"><a
-			href="/manager/main" class="text-light text-decoration-none">DAPAN&DA</a></span>
+			href="/manager/main" class="text-decoration-none text-dark">DAPAN&DA</a></span>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -52,16 +52,16 @@ body {
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link text-light"
+				<li class="nav-item active"><a class="nav-link text-dark"
 					href="/manager/main">관리 Home<span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item active"><a class="nav-link text-light"
+				<li class="nav-item active"><a class="nav-link text-dark"
 					href="/">메인 Home<span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link text-light"
+				<li class="nav-item"><a class="nav-link text-dark"
 					href="/manager/managerList">관리자 리스트</a></li>
 				<li class="nav-item"><c:if
 						test="${managerLogin.manager_code == 2 }">
-						<a class="nav-link text-light" href="/manager/calendar">
+						<a class="nav-link text-dark" href="/manager/calendar">
 							통계</a>
 					</c:if></li>
 			</ul>

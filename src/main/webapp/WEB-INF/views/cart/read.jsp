@@ -87,6 +87,7 @@ table .foot {
 <script type="text/javascript">
 var vo ="${map.list}";
 vo = eval(vo);
+console.log(vo[0].item_no);
 for(var i=0; i<vo.length; i++){
 	var div_class = ".uploadedList"+i;
 	var item_no = $(div_class).attr("data-item_no");
@@ -174,7 +175,18 @@ for(var i=0; i<vo.length; i++){
 			if (money == 0) {
 				alert("장바구니가 비었습니다.");
 			} else {
+				for(var i=0; i<vo.length; i++){
+					$.getJSON("/item/getAmount/"+vo[i].item_no, function(amount) {
+						if(amount < 1){
+							alert("장바구니에 품절 제품이 있습니다.");
+							location.reload();
+							return;
+						}
+					});
+				}
+				
 				location.assign("/order/insert/"+member_id);
+				
 			}
 			
 		});
