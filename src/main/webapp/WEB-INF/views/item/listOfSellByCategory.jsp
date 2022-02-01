@@ -23,16 +23,16 @@
 		<h4>${item_category} 목록</h4>
 		<div style="margin-left: 60%;">
 			<select id="optionOfList" name="optionOfList" class="form-select">
-				<option value="new" selected>최신순</option>
+				<option value="new">최신순</option>
 				<option value="old">오래된순</option>
-				<option value="sell">판매량순</option>
+				<option value="sell" selected>판매량순</option>
 			</select>
 			</div>
 		</div>
 		<div class="uploadedList row row-cols-3 row-cols-sm-4 row-cols-md-5 g-3">
 		</div>
 		<div style="margin-left: 40%">
-			<jsp:include page="pageforcategory.jsp"/>
+			<jsp:include page="pageForSellByCategory.jsp"/>
 		</div>
 	</div>
 <jsp:include page="../footer.jsp" />

@@ -20,7 +20,16 @@
 	<jsp:include page="../sidebar.jsp" />
 	
 	<div class="container container-table">
-		<h4>전체 상품 목록</h4>
+		<div class="row">
+			<h4>전체 상품 목록</h4>
+			<div style="margin-left: 60%;">
+			<select id="optionOfList" name="optionOfList" class="form-select">
+				<option value="new" selected>최신순</option>
+				<option value="old">오래된순</option>
+				<option value="sell">판매량순</option>
+			</select>
+			</div>
+		</div>
 		<div class="uploadedList row row-cols-3 row-cols-sm-4 row-cols-md-5 g-3">
 		</div>
 		<div style="margin-top : 100px; margin-bottom : 0px; margin-left: 40%;">
@@ -40,6 +49,17 @@ $(document).ready(function(){
 		$(".uploadedList").append(item);
 	
 	}
+	$("select[name=optionOfList]").change(function() {
+		optionOfList = $(this).val();
+		if(optionOfList == "old"){
+			location.assign("/item/listOfOld");
+		}else if(optionOfList == "sell"){
+			location.assign("/item/listOfSell");
+		}else{
+			location.assign("/item/list");
+		}
+	});
+	
 });		
 </script>
 </body>

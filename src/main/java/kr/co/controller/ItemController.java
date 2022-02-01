@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.domain.BoardVO;
 import kr.co.domain.CategoryVO;
 import kr.co.domain.ItemVO;
+import kr.co.domain.OrdersVO;
 import kr.co.domain.PageTO;
 import kr.co.domain.QnaVO;
 import kr.co.service.BoardService;
@@ -283,5 +284,169 @@ public class ItemController {
 
 		return entity;
 	}
+	
+	@RequestMapping(value = "/listOfOld/{curPage}", method = RequestMethod.GET)
+	public String listOfOld(@PathVariable("curPage") int curPage, PageTO<ItemVO> pt, Model model) {
+		
+		pt.setCurPage(curPage);
+		
+		pt = iService.listOfOld(pt);
+		
+		List<ItemVO> list= new ArrayList<ItemVO>();
+		
+		for(int i=0; i<pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no,item_name,file_name));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+		
+		return "item/listOfOld";
+	}
+	
+	@RequestMapping(value = "/listOfOld", method = RequestMethod.GET)
+	public void listOfOld(PageTO<ItemVO> pt, Model model) {
+		pt.setCurPage(1);
+		
+		pt = iService.listOfOld(pt);
+		
+		List<ItemVO> list= new ArrayList<ItemVO>();
+		
+		for(int i=0; i<pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no,item_name,file_name));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+	}
+	
+	@RequestMapping(value = "/listOfSell/{curPage}", method = RequestMethod.GET)
+	public String listOfSell(@PathVariable("curPage") int curPage, PageTO<OrdersVO> pt, Model model) {
+		
+		pt.setCurPage(curPage);
+		
+		pt = iService.listOfSell(pt);
+		
+		List<ItemVO> list= new ArrayList<ItemVO>();
+		
+		for(int i=0; i<pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no,item_name,file_name));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+		
+		return "item/listOfSell";
+	}
+	
+	@RequestMapping(value = "/listOfSell", method = RequestMethod.GET)
+	public void listOfSell(PageTO<OrdersVO> pt, Model model) {
+		pt.setCurPage(1);
+		
+		pt = iService.listOfSell(pt);
+		
+		List<ItemVO> list= new ArrayList<ItemVO>();
+		
+		for(int i=0; i<pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no,item_name,file_name));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+	}
 
+	@RequestMapping(value = "/listOfOldByCategory/{item_category}/1", method = RequestMethod.GET)
+	public String listOfOldByCategory(@PathVariable("item_category") String item_category, PageTO<ItemVO> pt, Model model) {
+		pt.setCurPage(1);
+		
+		pt = iService.listOfOldByCategory(pt, item_category);
+		
+		List<ItemVO> list= new ArrayList<ItemVO>();
+		
+		for(int i=0; i<pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no,item_name,file_name));
+		}
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+		model.addAttribute("item_category", item_category);
+		return "item/listOfOldByCategory";
+	}
+	
+	@RequestMapping(value = "/listOfOldByCategory/{item_category}/{curPage}", method = RequestMethod.GET)
+	public String listOfOldByCategory(@PathVariable("item_category") String item_category, @PathVariable("curPage") int curPage, PageTO<ItemVO> pt, Model model) {
+		
+		pt.setCurPage(curPage);
+		
+		pt = iService.listOfOldByCategory(pt, item_category);
+		
+		List<ItemVO> list= new ArrayList<ItemVO>();
+		
+		for(int i=0; i<pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no,item_name,file_name));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+		model.addAttribute("item_category", item_category);
+		
+		return "item/listOfOldByCategory";
+	}
+	
+	@RequestMapping(value = "/listOfSellByCategory/{item_category}/1", method = RequestMethod.GET)
+	public String listOfSellByCategory(@PathVariable("item_category") String item_category, PageTO<OrdersVO> pt, Model model) {
+		pt.setCurPage(1);
+		
+		pt = iService.listOfSellByCategory(pt, item_category);
+		
+		List<ItemVO> list= new ArrayList<ItemVO>();
+		
+		for(int i=0; i<pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no,item_name,file_name));
+		}
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+		model.addAttribute("item_category", item_category);
+		return "item/listOfSellByCategory";
+	}
+	
+	@RequestMapping(value = "/listOfSellByCategory/{item_category}/{curPage}", method = RequestMethod.GET)
+	public String listOfSellByCategory(@PathVariable("item_category") String item_category, @PathVariable("curPage") int curPage, PageTO<OrdersVO> pt, Model model) {
+		
+		pt.setCurPage(curPage);
+		
+		pt = iService.listOfSellByCategory(pt, item_category);
+		
+		List<ItemVO> list= new ArrayList<ItemVO>();
+		
+		for(int i=0; i<pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no,item_name,file_name));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+		model.addAttribute("item_category", item_category);
+		
+		return "item/listOfSellByCategory";
+	}
+	
 }

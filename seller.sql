@@ -11,17 +11,21 @@ CREATE TABLE seller(
 )
 
 select * from seller
-delete from CATEGORY
 select * from review
 select * from qna
 select * from item
 select * from ORDERS
 select * from category
-select sum(ea), item_no from orders where item_no in (select item_no from item where item_category = '시계') group by item_no order by sum(ea) desc
+select * from menus
+select sum(ea), item_no from orders where item_no in (select item_no from item where item_category = '식품') group by item_no order by sum(ea) desc
+select item_no from orders where item_no in (select item_no from item where item_category = '식품') group by item_no order by sum(ea) desc
+
 select * from qna where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = 'm001'))
 select * from review where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = 'm001'))
 select * from orders where item_no in (select item_no from item where seller_id = 'm001')
 
+
+select * from (select * from item where item_no in (select max(item_no) as item_no from item group by item_name)) where item_category = '식품' ORDER BY item_no asc
 create table menus (
 	menu_no number,
 	menu_name VARCHAR2(15),
@@ -30,11 +34,13 @@ create table menus (
 )
 CREATE SEQUENCE seq_menu_no
 
-select * from menus
-ALTER TABLE menus MODIFY menu_href VARCHAR2(30)
-
-insert into menus (menu_no,menu_name,menu_href) values (1,'좋아요','/likeitem/list/')
-insert into menus (menu_no,menu_name,menu_href) values (2,'장바구니','/cart/read/')
-insert into menus (menu_no,menu_name,menu_href) values (3,'주문배송조회','/order/detail/')
-insert into menus (menu_no,menu_name,menu_href) values (4,'리뷰 목록','/Myreplies/list/')
-insert into menus (menu_no,menu_name,menu_href) values (5,'QnA 목록','/qna/listForMember/')
+SELECT item.item_no as item_no, 
+      TO_CHAR(add_months(sysdate, -1)) as ORDERDATE,
+      item.item_name as item_name
+      FROM orders 
+      FULL OUTER JOIN item ON orders.item_no = item.item_no
+      WHERE item.item_category = '식품'
+      GROUP BY item.item_no, 
+      TO_CHAR(add_months(sysdate, -1)),
+      item.item_name
+      ORDER BY sum(orders.ea) desc NULLS LAST

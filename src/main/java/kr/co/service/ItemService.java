@@ -43,4 +43,12 @@ public interface ItemService {
 
 	int getAmount(int item_no);
 
+	PageTO<ItemVO> listOfOld(PageTO<ItemVO> pt);
+
+	PageTO<OrdersVO> listOfSell(PageTO<OrdersVO> pt);
+
+	PageTO<ItemVO> listOfOldByCategory(PageTO<ItemVO> pt, String item_category);
+
+	PageTO<OrdersVO> listOfSellByCategory(PageTO<OrdersVO> pt, String item_category);
+
 }

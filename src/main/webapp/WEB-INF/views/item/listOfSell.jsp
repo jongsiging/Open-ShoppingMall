@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Item List By Category</title>
+<title>Item List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,29 +16,29 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
+
 	<jsp:include page="../sidebar.jsp" />
 	
 	<div class="container container-table">
-	<div class="row">
-		<h4>${item_category} 목록</h4>
-		<div style="margin-left: 60%;">
+		<div class="row">
+			<h4>전체 상품 목록</h4>
+			<div style="margin-left: 60%;">
 			<select id="optionOfList" name="optionOfList" class="form-select">
-				<option value="new" selected>최신순</option>
+				<option value="new">최신순</option>
 				<option value="old">오래된순</option>
-				<option value="sell">판매량순</option>
+				<option value="sell" selected>판매량순</option>
 			</select>
 			</div>
 		</div>
 		<div class="uploadedList row row-cols-3 row-cols-sm-4 row-cols-md-5 g-3">
 		</div>
-		<div style="margin-left: 40%">
-			<jsp:include page="pageforcategory.jsp"/>
+		<div style="margin-top : 100px; margin-bottom : 0px; margin-left: 40%;">
+			<jsp:include page="pageForSell.jsp"/>
 		</div>
 	</div>
 <jsp:include page="../footer.jsp" />
 <script type="text/javascript">
 $(document).ready(function(){
-	var item_category = "${item_category}";
 	var vo = "${list}";
 	var arr = eval(vo);
 	for (var i=0; i<arr.length; i++){
@@ -47,17 +47,19 @@ $(document).ready(function(){
 		var file_name = arr[i].file_name;
 		var item = uploadedItemForlist(file_name,item_no,item_name);
 		$(".uploadedList").append(item);
+	
 	}
 	$("select[name=optionOfList]").change(function() {
 		optionOfList = $(this).val();
 		if(optionOfList == "old"){
-			location.assign("/item/listOfOldByCategory/"+item_category+"/1");
+			location.assign("/item/listOfOld");
 		}else if(optionOfList == "sell"){
-			location.assign("/item/listOfSellByCategory/"+item_category+"/1");
+			location.assign("/item/listOfSell");
 		}else{
-			location.assign("/item/list/"+item_category+"/1");
+			location.assign("/item/list");
 		}
 	});
+	
 });		
 </script>
 </body>

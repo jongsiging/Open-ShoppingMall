@@ -180,5 +180,29 @@ public class ItemDAOImpl implements ItemDAO {
 		return sqlSession.selectOne(NS+".getAmountItem", item_no);
 	}
 
+	@Override
+	public List<ItemVO> listOfOld(PageTO<ItemVO> pt) {
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		return sqlSession.selectList(NS+".listOfOld", null, rbs);
+	}
+
+	@Override
+	public List<OrdersVO> listOfSell(PageTO<OrdersVO> pt) {
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		return sqlSession.selectList(NS+".listForRank", null, rbs);
+	}
+
+	@Override
+	public List<ItemVO> listOfOldByCategory(PageTO<ItemVO> pt, String item_category) {
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		return sqlSession.selectList(NS+".listOfOldByCategory", item_category, rbs);
+	}
+
+	@Override
+	public List<OrdersVO> listOfSellByCategory(PageTO<OrdersVO> pt, String item_category) {
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		return sqlSession.selectList(NS+".listOfSellByCategory", item_category, rbs);
+	}
+
 
 }
