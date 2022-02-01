@@ -28,16 +28,24 @@
 		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img style="height: 400px;" src="/resources/img/1.PNG" class="d-block w-100" alt="...">
+					<a href="/search/search?item_category=All&keyword=깨끗한나라">
+						<img style="height: 400px;" src="/resources/img/1.PNG" class="d-block w-100" alt="...">
+					</a>
 				</div>
 				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/2.PNG" class="d-block w-100" alt="...">
+					<a href="/search/search?item_category=All&keyword=삼성">
+						<img style="height: 400px;" src="/resources/img/2.PNG" class="d-block w-100" alt="...">
+					</a>
 				</div>
 				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/3.PNG" class="d-block w-100" alt="...">
+					<a href="/search/search?item_category=All&keyword=LG">
+						<img style="height: 400px;" src="/resources/img/3.PNG" class="d-block w-100" alt="...">
+					</a>
 				</div>
 				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/4.PNG" class="d-block w-100" alt="...">
+					<a href="/item/list/식품/1">
+						<img style="height: 400px;" src="/resources/img/4.PNG" class="d-block w-100" alt="...">
+					</a>
 				</div>
 			</div>
 		</div>

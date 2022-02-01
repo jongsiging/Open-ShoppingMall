@@ -29,6 +29,9 @@
 	<select id="list" resultType="kr.co.domain.ItemVO">
 		select * from item where item_no in (select max(item_no) as item_no from item group by item_name) ORDER BY item_no DESC
 	</select>
+	<select id="listOfOld" resultType="kr.co.domain.ItemVO">
+		select * from item where item_no in (select max(item_no) as item_no from item group by item_name) ORDER BY item_no asc
+	</select>
 	<delete id="delete">
 		DELETE FROM item WHERE item_no = #{item_no}
 	</delete>
@@ -45,7 +48,10 @@
 		SELECT COUNT(item_no) FROM (select * from item where item_no in (select max(item_no) as item_no from item group by item_name)) where item_category = #{item_category}
 	</select>
 	<select id="listbycategory" resultType="kr.co.domain.ItemVO">
-		select * from (select * from item where item_no in (select max(item_no) as item_no from item group by item_name)) where item_category = #{item_category}
+		select * from (select * from item where item_no in (select max(item_no) as item_no from item group by item_name)) where item_category = #{item_category} ORDER BY item_no desc
+	</select>
+	<select id="listOfOldByCategory" resultType="kr.co.domain.ItemVO">
+		select * from (select * from item where item_no in (select max(item_no) as item_no from item group by item_name)) where item_category = #{item_category} ORDER BY item_no asc
 	</select>
 	<select id="getAmountSearch" resultType="Integer">
       SELECT COUNT(item_no) FROM (select * from item where item_no in (select max(item_no) as item_no from item group by item_name)) WHERE item_category = #{item_category} AND UPPER(item_name) LIKE '%' || UPPER(#{item_name}) || '%'
@@ -77,6 +83,18 @@
       item.item_name as item_name
       FROM orders 
       FULL OUTER JOIN item ON orders.item_no = item.item_no
+      GROUP BY item.item_no, 
+      TO_CHAR(add_months(sysdate, -1)),
+      item.item_name
+      ORDER BY sum(orders.ea) desc NULLS LAST
+	</select>
+	<select id="listOfSellByCategory" resultType="kr.co.domain.OrdersVO">
+		SELECT item.item_no as item_no, 
+      TO_CHAR(add_months(sysdate, -1)) as ORDERDATE,
+      item.item_name as item_name
+      FROM orders 
+      FULL OUTER JOIN item ON orders.item_no = item.item_no
+      WHERE item.item_category = #{item_category}
       GROUP BY item.item_no, 
       TO_CHAR(add_months(sysdate, -1)),
       item.item_name

@@ -188,6 +188,50 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return iDao.getAmount(item_no);
 	}
+	@Override
+	public PageTO<ItemVO> listOfOld(PageTO<ItemVO> pt) {
+		int amount = iDao.getAmount();
+		pt.setAmount(amount);
+		pt.setPerPage(12);
+		
+		List<ItemVO> list = iDao.listOfOld(pt);
+		pt.setList(list);
+		
+		return pt;
+	}
+	@Override
+	public PageTO<OrdersVO> listOfSell(PageTO<OrdersVO> pt) {
+		int amount = iDao.getAmount();
+		pt.setAmount(amount);
+		pt.setPerPage(12);
+		
+		List<OrdersVO> list = iDao.listOfSell(pt);
+		pt.setList(list);
+		
+		return pt;
+	}
+	@Override
+	public PageTO<ItemVO> listOfOldByCategory(PageTO<ItemVO> pt, String item_category) {
+		int amount = iDao.getAmountbycategory(item_category);
+		pt.setAmount(amount);
+		pt.setPerPage(12);
+		
+		List<ItemVO> list = iDao.listOfOldByCategory(pt,item_category);
+		pt.setList(list);
+		
+		return pt;
+	}
+	@Override
+	public PageTO<OrdersVO> listOfSellByCategory(PageTO<OrdersVO> pt, String item_category) {
+		int amount = iDao.getAmountbycategory(item_category);
+		pt.setAmount(amount);
+		pt.setPerPage(12);
+		
+		List<OrdersVO> list = iDao.listOfSellByCategory(pt,item_category);
+		pt.setList(list);
+		
+		return pt;
+	}
 
 
 

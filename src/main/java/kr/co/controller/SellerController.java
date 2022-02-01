@@ -84,7 +84,7 @@ public class SellerController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(SellerVO vo) {
 		sService.insert(vo);
-		return "redirect:/";
+		return "redirect:/seller";
 	}
 	
 	@RequestMapping(value = "/read/{seller_id}", method = RequestMethod.GET)
@@ -118,7 +118,7 @@ public class SellerController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(SellerVO vo) {
 		sService.delete(vo);		
-		return "redirect:/";
+		return "redirect:/seller";
 	}
 	
 	@RequestMapping(value = "/passChk", method = RequestMethod.POST)

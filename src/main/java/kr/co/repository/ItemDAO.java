@@ -60,6 +60,14 @@ public interface ItemDAO {
 
 	int getAmount(int item_no);
 
+	List<ItemVO> listOfOld(PageTO<ItemVO> pt);
+
+	List<OrdersVO> listOfSell(PageTO<OrdersVO> pt);
+
+	List<ItemVO> listOfOldByCategory(PageTO<ItemVO> pt, String item_category);
+
+	List<OrdersVO> listOfSellByCategory(PageTO<OrdersVO> pt, String item_category);
+
 	
 
 
