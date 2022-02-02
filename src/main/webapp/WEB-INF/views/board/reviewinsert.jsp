@@ -21,6 +21,7 @@
 
 <div class="modal-dialog" id="reviewContainer">
 <input hidden name="board_no" value="${board_no}">
+<input hidden name="order_id" value="${order_id}">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">
@@ -57,6 +58,7 @@
 
 	<script type="text/javascript">
 		var board_no = ${board_no};
+		var order_id = ${order_id};
 
 		$(document).ready(function() {
 			
@@ -106,6 +108,15 @@
 							$("#reviewContainer").hide();
 
 							getAllReplies(board_no, $("#replies"));
+							
+							$.ajax({
+								type : "put",
+								url : "/order/update/"+order_id,
+								dataType : "text",
+								success : function() {
+									console.log("a");
+								}
+							});
 							
 							opener.parent.location.reload();
 							window.close() 

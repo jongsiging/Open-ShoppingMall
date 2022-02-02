@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.order">
+	
+	<insert id="insert">
+	INSERT INTO orders (order_id, item_no, member_id, ea, price, address, dAddress, phone, status, receiver)
+	VALUES
+	(seq_order_id.NEXTVAL, #{item_no}, #{member_id}, #{ea}, #{price}, #{address}, #{dAddress}, #{phone}, #{status}, #{receiver})
+	<selectKey order="AFTER" keyProperty="order_id" resultType="Integer">
+	SELECT seq_order_id.CURRVAL FROM dual
+	</selectKey>
+	</insert>
+	
+	<select id="list" resultType="kr.co.domain.OrdersVO">
+	SELECT * FROM orders WHERE member_id = #{member_id} ORDER BY order_date desc
+	</select>
+	
+	<select id="list_manager" resultType="kr.co.domain.OrdersVO">
+	SELECT * FROM orders ORDER BY order_date desc
+	</select>
+	
+	<update id="status">
+	UPDATE orders SET status = #{status} WHERE order_id = #{order_id}
+	</update>
+	
+	<select id="mlist2" resultType="kr.co.domain.OrdersVO">
+	SELECT * FROM orders WHERE member_id = #{member_id} ORDER BY order_date DESC
+	</select>
+	
+	<select id="getOrder_date" resultType="String">
+	SELECT order_date FROM orders WHERE order_id = #{order_id} 
+	</select>
+	
+	<select id="checkorder" resultType="kr.co.domain.OrdersVO">
+   SELECT * FROM orders WHERE order_id = #{order_id}
+   </select>
+   <select id="getAmount" resultType="Integer">
+		SELECT COUNT(order_id) FROM orders
+	</select>
+	<select id="getAmountMember" resultType="Integer">
+		SELECT COUNT(order_id) FROM orders WHERE member_id = #{member_id}
+	</select>
+	<select id="getAmountForSeller" resultType="Integer">
+		select COUNT(*) from orders where item_no in (select item_no from item where seller_id = #{seller_id})
+	</select>
+	<select id="orderlist" resultType="kr.co.domain.OrdersVO">
+		select * from orders where item_no in (select item_no from item where seller_id = #{seller_id})
+	</select>
+	<update id="update">
+	UPDATE orders SET status = '배송완료(완)' WHERE order_id = #{order_id}
+	</update>
+</mapper>
