@@ -32,7 +32,7 @@
 		</div>
 		<div class="uploadedList row row-cols-3 row-cols-sm-4 row-cols-md-5 g-3">
 		</div>
-		<div style="margin-top : 100px; margin-bottom : 0px; margin-left: 40%;">
+		<div style="margin-top : 100px; margin-bottom : 0px; margin-left: 35%;">
 			<jsp:include page="page.jsp"/>
 		</div>
 	</div>

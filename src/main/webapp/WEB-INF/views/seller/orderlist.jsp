@@ -35,7 +35,7 @@
 		<table class="table">
 			<tr>
 				<th scope="col">회원아이디</th>
-				<!-- <th scope="col">이미지</th> -->
+				<th scope="col">이미지</th>
 				<th scope="col">상품명</th>
 				<th scope="col">제품수량</th>
 				<th scope="col">제품가격</th>

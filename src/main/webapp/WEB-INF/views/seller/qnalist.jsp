@@ -48,7 +48,7 @@ img {
 					<td>${vo.qna_title}</td>
 					<td>${vo.qna_regdate}</td>
 					<td>
-						<a class="btn btn-outline-primary btn-sm" href="/seller/qnaUpdate/${vo.qna_no}">수정</a>
+						<a class="btn btn-outline-primary btn-sm" href="/seller/qnaUpdate/${vo.qna_no}">답변</a>
 						<a class="btn btn-outline-primary btn-sm" class="delete" href="/seller/qnaDelete/${vo.qna_no}/${sellerLogin.seller_id}">삭제</a>
 					</td>
 				</tr>

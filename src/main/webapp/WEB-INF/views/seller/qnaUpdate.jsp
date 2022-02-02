@@ -18,15 +18,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
-
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="header.jsp" />
 	
 		<div class="row mb-2 container">
 		<div class="col-md-10">
 			<div style="margin-top : 80px; margin-left: 30%;" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 					<div class="col p-4 d-flex flex-column position-static">
-						<p class="card-text mb-auto"><h4>QnA 수정</h4></p>
+						<p class="card-text mb-auto"><h4>QnA 답변</h4></p>
 						<form action="/seller/qnaUpdate" method="post">
 							<input name="seller_id" value="${sellerLogin.seller_id}" type="hidden">
 							<div class="input-group mb-2"> 
@@ -35,7 +33,7 @@
 							</div>
 							<div class="input-group mb-2"> 
 								<span class="input-group-text">content</span>
-								<input name="qna_content" maxlength="100" style="width: 250px;" value="${vo.qna_content}">
+								<input name="qna_content" maxlength="100" style="width: 250px;" value="${vo.qna_content}" readonly="readonly">
 							</div>
 							<div class="input-group mb-2"> 
 								<span class="input-group-text">answer</span>
@@ -49,7 +47,7 @@
 		</div>
 	</div>
 	
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="footer.jsp" />
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("input[type='submit']").click(function(event) {

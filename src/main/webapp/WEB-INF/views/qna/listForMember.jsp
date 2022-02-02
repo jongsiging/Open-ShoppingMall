@@ -38,6 +38,7 @@ img {
 				<th scope="col">QnA</th>
 				<th scope="col">QnA 작성일</th>
 				<th scope="col">상태</th>
+				<th scope="col">비고</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,6 +53,9 @@ img {
 					<td>답변 준비중</td></c:if>
 					<c:if test="${vo.qna_answer != null}">
 					<td>답변 완료</td></c:if>
+					<td>
+						<a class="btn btn-outline-primary btn-sm" class="delete" href="/qna/delete/${vo.qna_no}">삭제</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -74,7 +78,15 @@ $(document).ready(function(){
 		console.log(item);
 		$(div_class).append(item);
 	}
-	
+	$('.delete').click(function() { 
+		var result = confirm('삭제 하시겠습니까?'); 
+		if(result) { 
+			var link = $(this).href;
+			location.assign(link);
+		} else { 
+			event.preventDefault();
+		} 
+	}); 
 });
 </script>
 </body>

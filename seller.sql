@@ -24,7 +24,7 @@ select * from qna where board_no in (select board_no from board where item_no in
 select * from review where board_no in (select board_no from board where item_no in (select item_no from item where seller_id = 'm001'))
 select * from orders where item_no in (select item_no from item where seller_id = 'm001')
 
-
+update ORDERS set status = '상품 준비 중' where order_id = 26
 select * from (select * from item where item_no in (select max(item_no) as item_no from item group by item_name)) where item_category = '식품' ORDER BY item_no asc
 create table menus (
 	menu_no number,
