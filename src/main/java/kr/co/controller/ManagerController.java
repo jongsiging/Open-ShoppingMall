@@ -35,6 +35,7 @@ import kr.co.domain.ManagerVO;
 import kr.co.domain.MemberVO;
 import kr.co.domain.OrdersVO;
 import kr.co.domain.PageTO;
+import kr.co.domain.SellerVO;
 import kr.co.service.ManagerService;
 
 
@@ -45,22 +46,16 @@ public class ManagerController {
 	@Inject
 	private ManagerService mService;
 	
-
-	
-	
-	
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	public void manager1(Model model) throws JsonProcessingException {
 		List<Object> daySale =  mService.daySale();
 		String daySale1 = new ObjectMapper().writeValueAsString(daySale);
 		model.addAttribute("daySale1", daySale1);
 	
-			List<Object> monthSale =  mService.monthSale();
-			String monthSale1 = new ObjectMapper().writeValueAsString(monthSale);
-			model.addAttribute("monthSale1", monthSale1);
-			model.addAttribute("monthSale", monthSale);
-			
-			
+		List<Object> monthSale =  mService.monthSale();
+		String monthSale1 = new ObjectMapper().writeValueAsString(monthSale);
+		model.addAttribute("monthSale1", monthSale1);
+		model.addAttribute("monthSale", monthSale);
 	}
 	
 	
@@ -146,8 +141,7 @@ public class ManagerController {
 	}
 	
 	
-	@RequestMapping(value = "/idcheck", 
-			method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
+	@RequestMapping(value = "/idcheck", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
 	@ResponseBody
 	public String idcheck(String manager_id) {
 		ManagerVO vo = mService.idcheck(manager_id);
@@ -158,11 +152,7 @@ public class ManagerController {
 			return "중복된 아이디입니다.";
 		}
 	}
-		
-	
-		
-	
-		
+
 	@RequestMapping(value = "/managerDelete", method = RequestMethod.POST)
 	public String delete(ManagerVO vo) {
 		mService.managerDelete(vo);
@@ -188,61 +178,54 @@ public class ManagerController {
 	}
 		
 
-		@RequestMapping(value = "/managerLogin", method = RequestMethod.POST)
-		public String login(HttpServletRequest request, ManagerVO vo, RedirectAttributes rttr) {
-			HttpSession session = request.getSession();
-			ManagerVO managerLogin = mService.managerLogin(vo);
+	@RequestMapping(value = "/managerLogin", method = RequestMethod.POST)
+	public String login(HttpServletRequest request, ManagerVO vo, RedirectAttributes rttr) {
+		HttpSession session = request.getSession();
+		ManagerVO managerLogin = mService.managerLogin(vo);
 			
-			if(managerLogin == null) {
-	            session.setAttribute("managerLogin", null);
-	            rttr.addFlashAttribute("msg", false);
+		if(managerLogin == null) {
+			session.setAttribute("managerLogin", null);
+	        rttr.addFlashAttribute("msg", false);
 	            return "/manager/managerLogin";
-	        } else {
-	            session.setAttribute("managerLogin", managerLogin);
-	            return "redirect:/manager/main/"+ managerLogin.getManager_id();
-	        }
-
-			
-			
+	    } else {
+	    	session.setAttribute("managerLogin", managerLogin);
+	        return "redirect:/manager/main/"+ managerLogin.getManager_id();
 	    }
+
+	}
 	 
 
-	    @RequestMapping(value="/logout")
-	    public String logout(HttpSession session) {
-	        session.invalidate(); 
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session) {
+	    session.invalidate(); 
 	     
-	        return "redirect:/manager/main"; 
-	    }
+	    return "redirect:/manager/main"; 
+	}
 
-		
-	
-		
-		
-		@RequestMapping(value = "/update/{manager_id}", method = RequestMethod.GET)
-		public String updateUI(@PathVariable("manager_id") String manager_id, Model model) {
+	@RequestMapping(value = "/update/{manager_id}", method = RequestMethod.GET)
+	public String updateUI(@PathVariable("manager_id") String manager_id, Model model) {
 			
-			ManagerVO vo = mService.updateUI(manager_id);
+		ManagerVO vo = mService.updateUI(manager_id);
 			
-			model.addAttribute("vo", vo);
+		model.addAttribute("vo", vo);
 			
-			return "/manager/update";
-		}
+		return "/manager/update";
+	}
 		
-		@RequestMapping(value = "/update", method = RequestMethod.POST)
-		public String update(ManagerVO vo) {
-			mService.update(vo);
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(ManagerVO vo) {
+		mService.update(vo);
 			
-			return "redirect:/manager/read/"+vo.getManager_id();
-		}
+		return "redirect:/manager/read/"+vo.getManager_id();
+	}
 		
-		
-		
-		@RequestMapping(value="excel", method = RequestMethod.GET)
-		public void downloadExcel(HttpServletResponse response) throws IOException {
+
+	@RequestMapping(value="excel", method = RequestMethod.GET)
+	public void downloadExcel(HttpServletResponse response) throws IOException {
 			 
-	        Workbook workbook = new HSSFWorkbook();
-	        Sheet sheet = workbook.createSheet("주문리스트");
-	        int rowNo = 0;
+		Workbook workbook = new HSSFWorkbook();
+		Sheet sheet = workbook.createSheet("주문리스트");
+		int rowNo = 0;
 	 
 	        Row headerRow = sheet.createRow(rowNo++);
 	        headerRow.createCell(0).setCellValue("오더 아이디");
@@ -278,38 +261,56 @@ public class ManagerController {
 	 
 	        workbook.write(response.getOutputStream());
 	        workbook.close();
-	    }
-		
-		
-		
-		
-		
-		
-		@RequestMapping(value = "/memberList/{curPage}", method = RequestMethod.GET)
-		public String list(@PathVariable("curPage") int curPage, PageTO<MemberVO> pt, Model model) {
-			pt.setCurPage(curPage);
-			
-			pt = mService.memberList(pt);
-			
-			model.addAttribute("pt", pt);
-			
-			return "/manager/memberList";
-		}
-		
-		
-		@RequestMapping(value = "/memberList", method = RequestMethod.GET)
-		public void list(PageTO<MemberVO> pt, Model model) {
-			pt = mService.memberList(pt);
-			
-			model.addAttribute("pt", pt);
-		}
-		
-		@RequestMapping(value = "/managerList", method = RequestMethod.GET)
-		public void list(Model model) {
-			List<Object> managerList = mService.managerList();
-			
-			model.addAttribute("managerList", managerList);
-		}	
 	}
+		
+	@RequestMapping(value = "/memberList/{curPage}", method = RequestMethod.GET)
+	public String list(@PathVariable("curPage") int curPage, PageTO<MemberVO> pt, Model model) {
+		pt.setCurPage(curPage);
+			
+		pt = mService.memberList(pt);
+			
+		model.addAttribute("pt", pt);
+			
+		return "/manager/memberList";
+	}
+		
+		
+	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
+	public void list(PageTO<MemberVO> pt, Model model) {
+		pt = mService.memberList(pt);
+			
+		model.addAttribute("pt", pt);
+	}
+		
+	@RequestMapping(value = "/managerList", method = RequestMethod.GET)
+	public void list(Model model) {
+		List<Object> managerList = mService.managerList();
+			
+		model.addAttribute("managerList", managerList);
+	}
+	
+	@RequestMapping(value = "/sellerList/{curPage}", method = RequestMethod.GET)
+	public String sellerList(@PathVariable("curPage") int curPage, PageTO<SellerVO> pt, Model model) {
+		pt.setCurPage(curPage);
+			
+		pt = mService.sellerList(pt);
+			
+		model.addAttribute("pt", pt);
+			
+		return "/manager/sellerList";
+	}
+		
+		
+	@RequestMapping(value = "/sellerList", method = RequestMethod.GET)
+	public void sellerList(PageTO<SellerVO> pt, Model model) {
+		pt.setCurPage(1);
+		
+		pt = mService.sellerList(pt);
+			
+		model.addAttribute("pt", pt);
+	}
+	
+		
+}
 	
 

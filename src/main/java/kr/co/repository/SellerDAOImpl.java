@@ -1,10 +1,14 @@
 package kr.co.repository;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.domain.PageTO;
 import kr.co.domain.SellerVO;
 
 @Repository
@@ -64,6 +68,18 @@ public class SellerDAOImpl implements SellerDAO {
 	public SellerVO login(SellerVO vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NS+".login", vo);
+	}
+
+	@Override
+	public int getAmount() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".getAmount");
+	}
+
+	@Override
+	public List<SellerVO> sellerList(PageTO<SellerVO> pt) {
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		return sqlSession.selectList(NS+".sellerList", null, rbs);
 	}
 	
 }

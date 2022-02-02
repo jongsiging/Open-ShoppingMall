@@ -83,7 +83,7 @@
 											data-order_date="${ovo.order_date}" data-price="${ovo.price}"
 											data-member_id="${ovo.member_id}"
 											data-order_id="${ovo.order_id}" class="btn_ex_re">교환/환불</button>
-										<input class="btn_review" data-item_no ="${ovo.item_no}" type="button" value="리뷰쓰기"/>
+										<input class="btn_review" data-order_id="${ovo.order_id}" data-item_no ="${ovo.item_no}" type="button" value="리뷰쓰기"/>
 									</c:if> <c:if
 										test="${ovo.status == '교환완료' || ovo.status == '환불완료' || ovo.status == '취소'}">
 										<p>완료</p>
@@ -162,8 +162,9 @@ $(document).ready(function() {
 	
 	$(".btn_review").click(function(){
 		var item_no = $(this).attr("data-item_no");
+		var order_id = $(this).attr("data-order_id");
 		$.getJSON("/board/getBoard_no/"+item_no, function(board_no) {
-			var url="../../board/reviewinsert/"+board_no;
+			var url="../../board/reviewinsert/"+board_no+"/"+order_id;
 	        window.open(url,"","width=400,height=500,left=600");
 		});
 	});

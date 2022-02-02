@@ -10,9 +10,6 @@ public interface OrderService {
 
 	/* public void insert(OrderVO vo); */
 
-
-
-
 	public String insert(List<OrdersVO> orderList);
 
 
@@ -35,5 +32,8 @@ public interface OrderService {
 
 
 	public PageTO<OrdersVO> orderlist(PageTO<OrdersVO> pt, String seller_id);
+
+
+	public void update(int order_id);
 
 }
