@@ -84,6 +84,7 @@
 				<a class="btn btn-outline-dark" href="/manager/logout">로그아웃</a> &nbsp; &nbsp;
   				<a class="btn btn-outline-dark" href="/manager/managerList">관리자 리스트</a> &nbsp; &nbsp;
 				<a class="btn btn-outline-dark" href="/manager/memberList">회원 리스트</a> &nbsp; &nbsp;
+				<a class="btn btn-outline-dark" href="/manager/sellerList">판매자 리스트</a> &nbsp; &nbsp;
 				<a class="btn btn-outline-dark" href="/manager/excel">주문 리스트(엑셀) 다운</a> &nbsp; &nbsp;
   			</c:if>
 

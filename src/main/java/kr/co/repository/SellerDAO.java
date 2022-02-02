@@ -1,5 +1,8 @@
 package kr.co.repository;
 
+import java.util.List;
+
+import kr.co.domain.PageTO;
 import kr.co.domain.SellerVO;
 
 public interface SellerDAO {
@@ -21,5 +24,9 @@ public interface SellerDAO {
 	void delete(SellerVO vo);
 
 	SellerVO login(SellerVO vo);
+
+	int getAmount();
+
+	List<SellerVO> sellerList(PageTO<SellerVO> pt);
 
 }

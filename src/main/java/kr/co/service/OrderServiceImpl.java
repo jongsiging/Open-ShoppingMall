@@ -143,6 +143,11 @@ public class OrderServiceImpl implements OrderService{
 		}	
 	}
 
+	@Override
+	public void update(int order_id) {
+		oDao.update(order_id);
+	}
+
 
 
 	

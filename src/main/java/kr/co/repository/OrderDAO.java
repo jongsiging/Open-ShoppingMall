@@ -35,5 +35,7 @@ public interface OrderDAO {
 
 	public List<OrdersVO> orderlist(PageTO<OrdersVO> pt, String seller_id);
 
+	public void update(int order_id);
+
 
 }

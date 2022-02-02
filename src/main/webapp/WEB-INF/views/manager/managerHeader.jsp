@@ -55,15 +55,23 @@
 				<li class="nav-item active"><a class="nav-link text-dark"
 					href="/manager/main">관리 Home<span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item active"><a class="nav-link text-dark"
-					href="/">메인 Home<span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link text-dark"
-					href="/manager/managerList">관리자 리스트</a></li>
-				<li class="nav-item"><c:if
-						test="${managerLogin.manager_code == 2 }">
-						<a class="nav-link text-dark" href="/manager/calendar">
-							통계</a>
-					</c:if></li>
+				<li class="nav-item active">
+					<a class="nav-link text-dark" href="/">메인 Home<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="/manager/managerList">관리자 리스트</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="/manager/memberList">회원 리스트</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="/manager/sellerList">판매자 리스트</a>
+				</li>
+				<li class="nav-item">
+					<c:if test="${managerLogin.manager_code == 2 }">
+						<a class="nav-link text-dark" href="/manager/calendar">통계</a>
+					</c:if>
+				</li>
 			</ul>
 		</div>
 	</nav>

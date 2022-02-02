@@ -226,10 +226,24 @@ public class OrderController {
 	@RequestMapping(value = "/status/{status}/{order_id}", method = RequestMethod.POST)
 	public ResponseEntity<List<OrdersVO>> status(@PathVariable("status") String status, @PathVariable("order_id") int order_id) {
 		ResponseEntity<List<OrdersVO>> entity = null;
-		System.out.println(status);
+		
 		OrdersVO vo = new OrdersVO(order_id, 0, null, 0, 0, null, null, null, status, null, null);
 		try {
 			oService.status(vo);
+			entity = new ResponseEntity<List<OrdersVO>>(HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<List<OrdersVO>>(HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+	
+	@RequestMapping(value = "/update/{order_id}", method = RequestMethod.PUT)
+	public ResponseEntity<List<OrdersVO>> status(@PathVariable("order_id") int order_id) {
+		ResponseEntity<List<OrdersVO>> entity = null;
+		try {
+			oService.update(order_id);
 			entity = new ResponseEntity<List<OrdersVO>>(HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

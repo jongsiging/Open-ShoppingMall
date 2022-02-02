@@ -42,6 +42,12 @@
 <select id="passChk" resultType="Integer">
 	SELECT COUNT(*) FROM seller WHERE seller_id = #{seller_id} AND seller_pw = #{seller_pw}
 </select>
+<select id="getAmount" resultType="Integer">
+	SELECT COUNT(seller_id) FROM seller
+</select>
 
+<select id="sellerList" resultType="kr.co.domain.SellerVO">
+	SELECT * FROM seller ORDER BY seller_id DESC
+</select>
 
 </mapper>

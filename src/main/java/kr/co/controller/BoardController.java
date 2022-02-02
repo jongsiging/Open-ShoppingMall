@@ -36,6 +36,14 @@ public class BoardController {
 		return "board/reviewinsert";
 	}
 
+	@RequestMapping(value = "reviewinsert/{board_no}/{order_id}" , method = RequestMethod.GET)
+	public String reviewinsert(@PathVariable("board_no") int board_no, @PathVariable("order_id") int order_id) {
+	
+		
+		
+		return "board/reviewinsert";
+	}
+	
 	
 	   @RequestMapping(value = "/update/{board_no}/{item_no}", method = RequestMethod.POST)
 	   public String update(@PathVariable("board_no") int board_no, 

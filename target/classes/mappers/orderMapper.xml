@@ -49,4 +49,7 @@
 	<select id="orderlist" resultType="kr.co.domain.OrdersVO">
 		select * from orders where item_no in (select item_no from item where seller_id = #{seller_id})
 	</select>
+	<update id="update">
+	UPDATE orders SET status = '배송완료(완)' WHERE order_id = #{order_id}
+	</update>
 </mapper>
